@@ -1,181 +1,282 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heralding Time Article</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heralding Time — Saggio</title>
+  <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Playfair Display, JetBrains Mono, EB Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="ht_data.js"></script>
   <script src="post_content_data.js"></script>
   <script src="posts/article_interruption.js"></script>
-    <script>
-      async function getArticleBody(markdownFile) {
-        if (
-          window.POST_CONTENTS &&
-          Object.prototype.hasOwnProperty.call(window.POST_CONTENTS, markdownFile)
-        ) {
-          return window.POST_CONTENTS[markdownFile];
-        }
+</head>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Salta al contenuto principale</a>
 
-        const response = await fetch(markdownFile);
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        return response.text();
-      }
+  <!-- 5. Navigazione sottile con logo a sinistra e link a destra -->
+  <header class="ht-navbar" role="banner">
+    <div class="ht-nav-container">
+      <div class="ht-nav-brand">
+        <a href="index.html" class="ht-back-to-backyard" title="Torna alla homepage di Backyard">← Backyard</a>
+        <span class="ht-nav-divider" aria-hidden="true">/</span>
+        <a href="ht.html" class="ht-nav-logo" aria-label="Heralding Time Home">
+          HERALDING TIME
+        </a>
+      </div>
 
-      function showArticleError(containerId, message) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = `<p>Unable to load post content. ${message}</p>`;
-      }
+      <!-- Desktop Links -->
+      <nav class="ht-nav-links" id="ht-nav-menu" aria-label="Navigazione Heralding Time">
+        <a href="ht.html#archivio" class="ht-nav-link">Archivio</a>
+        <a href="about.html" class="ht-nav-link">Chi siamo</a>
+        <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer" class="ht-nav-link ht-nav-subscribe">Iscriviti</a>
+      </nav>
 
-      function plainTextLength(input) {
-        return (input || '')
-          .replace(/<[^>]*>/g, ' ')
-          .replace(/\s+/g, ' ')
-          .trim()
-          .length;
-      }
+      <!-- Mobile Hamburger Button -->
+      <button class="ht-hamburger" id="ht-hamburger-btn" type="button" aria-expanded="false" aria-controls="ht-nav-menu" aria-label="Apri menu di navigazione">
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
 
-      function escapeHtml(input) {
-        return (input || '')
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
+  <!-- Main Article Layout -->
+  <main id="main-content" class="ht-article-layout">
+    
+    <nav class="ht-article-back-nav" aria-label="Navigazione ritorno">
+      <a href="ht.html#archivio" class="ht-back-btn">
+        <span aria-hidden="true">←</span>
+        <span>Torna a tutti i saggi</span>
+      </a>
+    </nav>
 
-      function buildShortContentNote(article) {
-        const excerpt = (article && article.excerpt) || '';
-        const markdownFile = (article && article.markdownFile) || 'unknown file';
-        const excerptHtml = excerpt ? `<p>${escapeHtml(excerpt)}</p>` : '';
-        return `
-          <div class="archive-short-content-note">
-            ${excerptHtml}
-            <p><em>Archive note: this local file currently contains only a short preview. Source file: ${escapeHtml(markdownFile)}.</em></p>
+    <article class="ht-single-article">
+      <!-- Intestazione articolo -->
+      <header class="ht-article-header">
+        <div class="ht-article-eyebrow-row">
+          <span class="ht-article-badge">FROM BACKYARD</span>
+          <span class="ht-meta-dot" aria-hidden="true">•</span>
+          <span class="ht-article-category" id="ht-article-category">HERALDING TIME</span>
+        </div>
+
+        <h1 class="ht-article-headline" id="ht-article-title">Caricamento in corso...</h1>
+
+        <p class="ht-article-deck" id="ht-article-deck" style="display: none;"></p>
+
+        <div class="ht-article-meta-bar">
+          <div class="ht-article-meta-left">
+            <time id="ht-article-date" datetime=""></time>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span id="ht-article-readtime"></span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>HERALDING TIME</span>
           </div>
-        `;
+          <div class="ht-article-meta-share">
+            <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer">
+              Substack Originale <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Immagine di copertina (se presente) -->
+      <div id="ht-article-cover-wrap" class="ht-article-cover-wrap" style="display: none;">
+        <img id="ht-article-cover-img" src="" alt="" loading="eager">
+      </div>
+
+      <!-- Testo del saggio a 17px con interlinea 1.6 -->
+      <div id="ht-article-body" class="ht-article-body"></div>
+    </article>
+
+    <!-- Sezione "Leggi anche..." con griglia responsiva 3/2/1 colonne -->
+    <section class="ht-related-section" aria-labelledby="ht-related-heading">
+      <div class="ht-related-header">
+        <h2 id="ht-related-heading" class="ht-related-title">Leggi anche...</h2>
+        <a href="ht.html#archivio" class="ht-back-btn">Vedi tutti <span aria-hidden="true">→</span></a>
+      </div>
+      <div id="ht-related-grid" class="ht-related-grid"></div>
+    </section>
+
+    <!-- Box iscrizione newsletter Heralding Time -->
+    <section class="ht-newsletter-box" aria-labelledby="ht-article-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Heralding Time Substack</p>
+        <h3 id="ht-article-nl-heading" class="ht-nl-title">Ti è piaciuto questo saggio?</h3>
+        <p class="ht-nl-desc">Iscriviti gratuitamente per ricevere i prossimi capitoli sulla storia della scienza e del pensiero direttamente nella tua casella di posta.</p>
+      </div>
+      <form class="ht-nl-form" action="https://heraldingtime.substack.com" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="La tua email..." 
+            aria-label="Indirizzo email"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Iscriviti</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    async function getArticleBody(markdownFile) {
+      if (
+        window.POST_CONTENTS &&
+        Object.prototype.hasOwnProperty.call(window.POST_CONTENTS, markdownFile)
+      ) {
+        return window.POST_CONTENTS[markdownFile];
       }
 
-      function renderArticleBody(containerId, bodyText, article) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
+      const response = await fetch(markdownFile);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return response.text();
+    }
 
-        const trimmed = (bodyText || '').trim();
-        if (!trimmed) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
+    function showArticleError(containerId, message) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = `<p class="ht-empty-state">Impossibile caricare il testo del saggio. ${message}</p>`;
+    }
 
-        const plainLen = plainTextLength(trimmed);
+    function plainTextLength(input) {
+      return (input || '')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .length;
+    }
 
-        // Imported posts sometimes already contain HTML.
-        const looksLikeHtml = /<\s*[a-z!][^>]*>/i.test(trimmed);
-        const shortNote = plainLen < 120 ? buildShortContentNote(article) : '';
-        let renderedHtml = '';
+    function escapeHtml(input) {
+      return (input || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-        if (looksLikeHtml) {
-          renderedHtml = trimmed;
-        } else if (window.marked && typeof window.marked.parse === 'function') {
-          renderedHtml = window.marked.parse(trimmed);
-        } else {
-          renderedHtml = trimmed
-            .split(/\n{2,}/)
-            .map(block => {
-              const escaped = escapeHtml(block);
-              const withImages = escaped.replace(
-                /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
-                (_m, alt, src, title) => `<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ''} loading="lazy">`
-              );
-              return `<p>${withImages.replace(/\n/g, '<br>')}</p>`;
-            })
-            .join('');
-        }
+    function buildShortContentNote(article) {
+      const excerpt = (article && article.excerpt) || '';
+      const markdownFile = (article && article.markdownFile) || 'unknown file';
+      const excerptHtml = excerpt ? `<p>${escapeHtml(excerpt)}</p>` : '';
+      return `
+        <div class="archive-short-content-note">
+          ${excerptHtml}
+          <p><em>Nota di archivio: questo file contiene attualmente un'anteprima breve. File sorgente: ${escapeHtml(markdownFile)}.</em></p>
+        </div>
+      `;
+    }
 
-        if (!plainTextLength(renderedHtml)) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
+    function renderArticleBody(containerId, bodyText, article) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
 
-        container.innerHTML = renderedHtml + shortNote;
+      const trimmed = (bodyText || '').trim();
+      if (!trimmed) {
+        container.innerHTML = buildShortContentNote(article);
+        return;
       }
 
-      function applyCoverImageLayout(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
+      const plainLen = plainTextLength(trimmed);
+      const looksLikeHtml = /<\s*[a-z!][^>]*>/i.test(trimmed);
+      const shortNote = plainLen < 120 ? buildShortContentNote(article) : '';
+      let renderedHtml = '';
 
-        const firstMediaBlock = container.querySelector('figure, .captioned-image-container');
-        const firstImage = container.querySelector('img');
-        const coverNode = firstMediaBlock || firstImage;
-        if (!coverNode) return;
-
-        coverNode.classList.add('article-cover-media');
-
-        const imageNode = coverNode.tagName === 'IMG'
-          ? coverNode
-          : coverNode.querySelector('img');
-        if (imageNode) imageNode.classList.add('article-cover-media-image');
+      if (looksLikeHtml) {
+        renderedHtml = trimmed;
+      } else if (window.marked && typeof window.marked.parse === 'function') {
+        renderedHtml = window.marked.parse(trimmed);
+      } else {
+        renderedHtml = trimmed
+          .split(/\n{2,}/)
+          .map(block => {
+            const escaped = escapeHtml(block);
+            const withImages = escaped.replace(
+              /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
+              (_m, alt, src, title) => `<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ''} loading="lazy">`
+            );
+            return `<p>${withImages.replace(/\n/g, '<br>')}</p>`;
+          })
+          .join('');
       }
 
-      function renderInterruptionsFromArticle(containerId, article) {
-        const container = document.getElementById(containerId);
-        if (!container || !article || !article.interruptions) return;
+      if (!plainTextLength(renderedHtml)) {
+        container.innerHTML = buildShortContentNote(article);
+        return;
+      }
 
-        article.interruptions.forEach(interruption => {
-          const div = container.querySelector(`#${interruption.id}`);
-          if (div && window.renderInterruption) {
-            window.renderInterruption(interruption.id, interruption.caption);
+      container.innerHTML = renderedHtml + shortNote;
+    }
+
+    function removeDuplicateTitle(containerId, pageTitle) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const firstHeading = container.querySelector('h1, h2');
+      if (!firstHeading) return;
+
+      const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (normalize(firstHeading.textContent) === normalize(pageTitle)) {
+        firstHeading.remove();
+      }
+    }
+
+    function renderInterruptionsFromArticle(containerId, article) {
+      const container = document.getElementById(containerId);
+      if (!container || !article || !article.interruptions) return;
+
+      article.interruptions.forEach(interruption => {
+        const div = container.querySelector(`#${interruption.id}`);
+        if (div && window.renderInterruption) {
+          window.renderInterruption(interruption.id, interruption.caption);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Mobile Menu Hamburger Toggle
+      const hamburgerBtn = document.getElementById('ht-hamburger-btn');
+      const navMenu = document.getElementById('ht-nav-menu');
+
+      if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+          const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+          hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('open');
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('open');
+            hamburgerBtn.focus();
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('open');
           }
         });
       }
-      function processInterruptions(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        
-        // Find all interruption divs and their scripts
-        const interruptionDivs = container.querySelectorAll('[id^="interruption-"]');
-        interruptionDivs.forEach(div => {
-          const id = div.id;
-          // Look for the script that follows this div
-          let sibling = div.nextElementSibling;
-          while (sibling) {
-            if (sibling.tagName === 'SCRIPT') {
-              // Extract caption from renderInterruption call
-              const match = sibling.textContent.match(/renderInterruption\(['"](\w+)['"]\s*,\s*['"]([^'"]*)['"]\)/);
-              if (match && match[1] === id) {
-                const caption = match[2];
-                renderInterruption(id, caption);
-                sibling.remove();
-                break;
-              }
-            }
-            sibling = sibling.nextElementSibling;
-          }
-        });
-      }
 
-      function removeDuplicateTitle(containerId, pageTitle) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const firstHeading = container.querySelector('h1, h2');
-        if (!firstHeading) return;
-
-        const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
-        if (normalize(firstHeading.textContent) === normalize(pageTitle)) {
-          firstHeading.remove();
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', async () => {
-        const bodyContainerId = 'ht-article-body';
-        try {
+      const bodyContainerId = 'ht-article-body';
+      try {
         const dedupeArticles = sourceArticles => {
           const scoreArticle = article => {
             const file = ((article && article.markdownFile) || '').toLowerCase();
@@ -231,9 +332,52 @@
           return slug ? `ht_article.html?article=${encodeURIComponent(slug)}` : 'ht_article.html';
         };
 
+        const detectCategory = (article) => {
+          const title = (article.title || '').toLowerCase();
+          const excerpt = (article.excerpt || '').toLowerCase();
+          const lang = (article.language || '').toLowerCase();
+
+          if (title.includes('atomos')) return 'ATOMOS';
+          if (excerpt.includes('motion of the earth') || excerpt.includes('sul moto della terra')) {
+            return lang.includes('ita') ? 'SUL MOTO DELLA TERRA' : 'ON THE MOTION OF THE EARTH';
+          }
+          if (title.includes('cicloide') || title.includes('cycloid')) {
+            return lang.includes('ita') ? 'STORIA DELLA SCIENZA' : 'HISTORY OF SCIENCE';
+          }
+          if (title.includes('natale') || title.includes('christmas')) {
+            return lang.includes('ita') ? 'ASTRONOMIA' : 'ASTRONOMY';
+          }
+          if (title.includes('parmenide') || title.includes('parmenides') || title.includes('talete') || title.includes('thales') || title.includes('anassimandro') || title.includes('anaximander')) {
+            return lang.includes('ita') ? 'FILOSOFIA ANTICA' : 'ANCIENT PHILOSOPHY';
+          }
+          return lang.includes('ita') ? 'SAGGIO' : 'ESSAY';
+        };
+
+        const estimateReadTime = (article) => {
+          const lang = (article.language || '').toLowerCase();
+          const words = ((article.title || '') + ' ' + (article.excerpt || '')).split(/\s+/).length;
+          const minutes = Math.max(3, Math.min(8, Math.round(words / 15) + 3));
+          return lang.includes('ita') ? `${minutes} MIN LETTURA` : `${minutes} MIN READ`;
+        };
+
+        const formatDisplayDate = (dateStr, lang) => {
+          if (!dateStr) return '';
+          try {
+            const date = new Date(dateStr);
+            if (isNaN(date.getTime())) return dateStr;
+            const isIta = (lang || '').toLowerCase().includes('ita');
+            const monthsIta = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
+            const monthsEng = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const months = isIta ? monthsIta : monthsEng;
+            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+          } catch (e) {
+            return dateStr;
+          }
+        };
+
         const params = new URLSearchParams(window.location.search);
         const requestedArticleSlug = params.get('article');
-        const requestedId = params.get('id') || '1';
+        const requestedId = params.get('id') || '46';
         const deduped = dedupeArticles(window.HT_ARTICLES || {});
         const articles = deduped.articles;
         const idBySlug = {};
@@ -248,128 +392,131 @@
         const article = articles[id] || articles[fallbackId];
 
         if (!article) {
-          showArticleError(bodyContainerId, 'Post not found.');
+          showArticleError(bodyContainerId, 'Post non trovato.');
           return;
         }
 
+        // Popola metadati articolo
+        document.title = `${article.title} — HERALDING TIME`;
         document.getElementById('ht-article-title').textContent = article.title;
+        
+        const category = detectCategory(article);
+        document.getElementById('ht-article-category').textContent = category;
 
+        if (article.excerpt) {
+          const deck = document.getElementById('ht-article-deck');
+          deck.textContent = article.excerpt;
+          deck.style.display = 'block';
+        }
+
+        const dateEl = document.getElementById('ht-article-date');
+        dateEl.textContent = formatDisplayDate(article.date, article.language);
+        dateEl.setAttribute('datetime', article.date || '');
+
+        document.getElementById('ht-article-readtime').textContent = estimateReadTime(article);
+
+        // Copertina
+        if (article.image) {
+          const coverWrap = document.getElementById('ht-article-cover-wrap');
+          const coverImg = document.getElementById('ht-article-cover-img');
+          coverImg.src = article.image;
+          coverImg.alt = `Copertina: ${article.title}`;
+          coverWrap.style.display = 'block';
+        }
+
+        // Carica e renderizza il corpo dell'articolo
         try {
           const mdText = await getArticleBody(article.markdownFile);
           renderArticleBody(bodyContainerId, mdText, article);
           removeDuplicateTitle(bodyContainerId, article.title);
           renderInterruptionsFromArticle(bodyContainerId, article);
-          applyCoverImageLayout(bodyContainerId);
         } catch (error) {
           showArticleError(bodyContainerId, `File: ${article.markdownFile}.`);
         }
 
-        const suggestionsUl = document.getElementById('ht-suggestions-list');
-        const suggestionsGrid = document.getElementById('ht-read-also-grid');
-        if (suggestionsUl || suggestionsGrid) {
+        // Sezione "Leggi anche..." (Articoli correlati) in griglia 3/2/1 colonne
+        const relatedGrid = document.getElementById('ht-related-grid');
+        if (relatedGrid) {
           const ids = Object.keys(articles).sort((a, b) => {
             const da = new Date(articles[a].date || 0);
             const db = new Date(articles[b].date || 0);
             return db - da;
           });
 
-          const seriesIds = ids.filter(articleId => {
-            if (articleId === id) return false;
-            const item = articles[articleId] || {};
-            const excerpt = (item.excerpt || '').toLowerCase();
-            return excerpt.includes('on the motion of the earth') || excerpt.includes('sul moto della terra');
+          // Mostra saggi correlati (stessa categoria o serie, oppure i più recenti escluso quello corrente)
+          let relatedIds = ids.filter(artId => {
+            if (artId === id) return false;
+            const other = articles[artId];
+            return detectCategory(other) === category;
           });
 
-          if (!seriesIds.length) {
-            if (suggestionsUl) {
-              const li = document.createElement('li');
-              li.textContent = 'No related posts yet.';
-              suggestionsUl.appendChild(li);
-            }
-            if (suggestionsGrid) {
-              const p = document.createElement('p');
-              p.className = 'article-read-also-empty';
-              p.textContent = 'No related posts yet.';
-              suggestionsGrid.appendChild(p);
-            }
-          } else {
-            seriesIds.forEach(seriesId => {
-              const relatedArticle = articles[seriesId] || {};
-
-              if (suggestionsUl) {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = buildArticleHref(relatedArticle);
-                a.textContent = relatedArticle.title;
-                li.appendChild(a);
-                suggestionsUl.appendChild(li);
-              }
-
-              if (suggestionsGrid) {
-                const card = document.createElement('a');
-                card.className = 'article-mini-card';
-                card.href = buildArticleHref(relatedArticle);
-
-                if (relatedArticle.image) {
-                  const thumb = document.createElement('img');
-                  thumb.className = 'article-mini-card-image';
-                  thumb.src = relatedArticle.image;
-                  thumb.alt = relatedArticle.title || 'Related article image';
-                  thumb.loading = 'lazy';
-                  card.appendChild(thumb);
-                } else {
-                  const thumbPlaceholder = document.createElement('div');
-                  thumbPlaceholder.className = 'article-mini-card-image article-mini-card-image-empty';
-                  card.appendChild(thumbPlaceholder);
-                }
-
-                const body = document.createElement('div');
-                body.className = 'article-mini-card-body';
-
-                const title = document.createElement('h3');
-                title.className = 'article-mini-card-title';
-                title.textContent = relatedArticle.title || 'Untitled article';
-
-                body.appendChild(title);
-                card.appendChild(body);
-                suggestionsGrid.appendChild(card);
+          // Se sono meno di 3, aggiungi altri saggi recenti
+          if (relatedIds.length < 3) {
+            ids.forEach(artId => {
+              if (artId !== id && !relatedIds.includes(artId)) {
+                relatedIds.push(artId);
               }
             });
           }
+
+          const topRelated = relatedIds.slice(0, 3);
+
+          if (topRelated.length) {
+            relatedGrid.innerHTML = topRelated.map((relId, idx) => {
+              const relArt = articles[relId];
+              const relHref = buildArticleHref(relArt);
+              const relCat = detectCategory(relArt);
+              const relDate = formatDisplayDate(relArt.date, relArt.language);
+              const relRead = estimateReadTime(relArt);
+              const isIta = (relArt.language || '').toLowerCase().includes('ita');
+              const readLabel = isIta ? 'Leggi' : 'Read';
+              const relTitleId = `ht-rel-title-${relId}-${idx}`;
+
+              const mediaMarkup = relArt.image
+                ? `<img src="${relArt.image}" alt="Copertina: ${relArt.title}" class="ht-card-image" loading="lazy">`
+                : `<div class="ht-card-media-fallback" aria-hidden="true">HT</div>`;
+
+              return `
+                <article class="ht-article-card" aria-labelledby="${relTitleId}">
+                  <a href="${relHref}" class="ht-card-media-link" tabindex="-1" aria-hidden="true">
+                    <div class="ht-card-media-wrap">
+                      ${mediaMarkup}
+                    </div>
+                  </a>
+                  <div class="ht-card-content">
+                    <div class="ht-card-meta">
+                      <span class="ht-card-category">${relCat}</span>
+                      <span class="ht-meta-dot" aria-hidden="true">•</span>
+                      <time class="ht-card-date" datetime="${relArt.date || ''}">${relDate}</time>
+                      <span class="ht-meta-dot" aria-hidden="true">•</span>
+                      <span class="ht-card-readtime">${relRead}</span>
+                    </div>
+                    <h3 id="${relTitleId}" class="ht-card-title">
+                      <a href="${relHref}">${relArt.title}</a>
+                    </h3>
+                    <p class="ht-card-excerpt">${relArt.excerpt || ''}</p>
+                    <div class="ht-card-footer">
+                      <a href="${relHref}" class="ht-card-read-link" aria-label="${readLabel}: ${relArt.title}">
+                        <span>${readLabel}</span>
+                        <span class="ht-arrow" aria-hidden="true">→</span>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              `;
+            }).join('');
+          } else {
+            relatedGrid.innerHTML = '<p class="ht-empty-state">Nessun altro saggio correlato al momento.</p>';
+          }
         }
-        } catch (error) {
-          showArticleError(bodyContainerId, `Runtime error: ${error.message}`);
-        }
-      });
-    </script>
-</head>
-<body>
-  <div id="site-header"></div>
 
-  <main id="main-content" class="page-wrapper heralding-page blog-article">
-    <div id="blog-layout" class="publication-layout">
-      <aside id="blog-sidebar" class="blog-sidebar">
-        <section>
-          <h2>read also...</h2>
-          <ul class="blog-sidebar-list" id="ht-suggestions-list"></ul>
-        </section>
-      </aside>
-
-      <article class="blog-article-container">
-        <h1 id="ht-article-title"></h1>
-        <section id="ht-article-body" class="blog-article-content"></section>
-
-        <section class="article-read-also" aria-labelledby="ht-read-also-title">
-          <h2 id="ht-read-also-title">read also...</h2>
-          <div id="ht-read-also-grid" class="article-mini-grid"></div>
-        </section>
-      </article>
-    </div>
-  </main>
-
-  <div id="site-footer"></div>
+      } catch (error) {
+        showArticleError(bodyContainerId, `Errore di caricamento: ${error.message}`);
+      }
+    });
+  </script>
 
   <script src="layout.js"></script>
-  <script src="headerScrollState.js"></script>
+  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

@@ -1,40 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HERALDING TIME</title>
-  <link rel="stylesheet" href="style.css">
+  <title>HERALDING TIME — From Backyard</title>
+  <meta name="description" content="Heralding Time: saggi su storia e filosofia della scienza, musica, letteratura e cultura. Parte della famiglia di pubblicazioni From Backyard.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+  
+  <!-- Typography: Playfair Display (titoli e logo), JetBrains Mono (metadati), EB Garamond (testo corrente) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="ht_data.js"></script>
 </head>
-<body>
-  <div id="site-header"></div>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Salta al contenuto principale</a>
 
-  <main id="main-content" class="page-wrapper collection-page publication-home heralding-page">
-    <h1 class="publication-title-image-wrap">
-      <img src="images/titles/ht.png" alt="HERALDING TIME" class="publication-title-image">
-    </h1>
+  <!-- 5. Navigazione: barra sottile con logo a sinistra e link a destra -->
+  <header class="ht-navbar" role="banner">
+    <div class="ht-nav-container">
+      <div class="ht-nav-brand">
+        <a href="index.html" class="ht-back-to-backyard" title="Torna alla homepage di Backyard">← Backyard</a>
+        <span class="ht-nav-divider" aria-hidden="true">/</span>
+        <a href="ht.html" class="ht-nav-logo" aria-label="Heralding Time Home">
+          HERALDING TIME
+        </a>
+      </div>
 
-    <section id="ht-featured" class="publication-featured"></section>
+      <!-- Desktop Navigation Links -->
+      <nav class="ht-nav-links" id="ht-nav-menu" aria-label="Navigazione Heralding Time">
+        <a href="#archivio" class="ht-nav-link">Archivio</a>
+        <a href="about.html" class="ht-nav-link">Chi siamo</a>
+        <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer" class="ht-nav-link ht-nav-subscribe">Iscriviti</a>
+        
+        <div class="ht-nav-lang-picker" role="group" aria-label="Filtro lingua">
+          <button type="button" class="ht-lang-btn active" data-lang="all" aria-pressed="true" title="Tutti gli articoli">TUTTI</button>
+          <button type="button" class="ht-lang-btn" data-lang="ita" aria-pressed="false" title="Edizione in italiano">ITA</button>
+          <button type="button" class="ht-lang-btn" data-lang="eng" aria-pressed="false" title="English edition">ENG</button>
+        </div>
+      </nav>
 
-    <hr>
+      <!-- Mobile Hamburger Button -->
+      <button class="ht-hamburger" id="ht-hamburger-btn" type="button" aria-expanded="false" aria-controls="ht-nav-menu" aria-label="Apri menu di navigazione">
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+        <span class="ht-hamburger-line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
 
-    <section id="ht-sections" class="publication-sections"></section>
+  <!-- 1. Hero: Logo centrato, 'FROM BACKYARD' sopra, descrizione e retino a punti SVG -->
+  <section class="ht-hero" aria-labelledby="ht-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="ht-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="ht-dot-fade">
+            <radialGradient id="ht-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#ht-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#ht-dot-grid)" mask="url(#ht-dot-fade)" />
+      </svg>
+    </div>
 
-    <hr>
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">FROM BACKYARD</span>
+      </div>
 
-    <section id="ht-footer-archive" class="publication-footer-section"></section>
+      <h1 id="ht-hero-title" class="ht-hero-title">HERALDING TIME</h1>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description" id="ht-hero-desc">
+        Saggi su storia e filosofia della scienza, pensiero critico e cultura.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer" class="ht-btn-primary">
+          <span>Iscriviti su Substack</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#archivio" class="ht-btn-secondary">
+          <span>Sfoglia l'archivio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra filtri archivio -->
+  <div class="ht-archive-header-wrap" id="archivio">
+    <div class="ht-archive-header">
+      <div class="ht-archive-title-group">
+        <h2 class="ht-archive-title" id="ht-archive-heading">Pubblicazioni</h2>
+        <span class="ht-archive-count" id="ht-articles-count">25 SAGGI</span>
+      </div>
+
+      <div class="ht-filter-tags" role="toolbar" aria-label="Filtra articoli per serie">
+        <button type="button" class="ht-filter-tag active" data-filter="all">Tutti</button>
+        <button type="button" class="ht-filter-tag" data-filter="atomos">ATOMOS</button>
+        <button type="button" class="ht-filter-tag" data-filter="motion">Sul moto della Terra</button>
+        <button type="button" class="ht-filter-tag" data-filter="filosofia">Filosofia &amp; Scienza</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenuto principale con griglia articoli responsive (3 col desktop, 2 col tablet, 1 col mobile) -->
+  <main id="main-content" class="ht-main-content">
+    
+    <!-- Articolo in evidenza (Featured) -->
+    <section id="ht-featured-container" aria-label="Articolo in evidenza"></section>
+
+    <!-- Griglia Articoli -->
+    <section aria-labelledby="ht-archive-heading">
+      <div class="ht-articles-grid" id="ht-articles-grid"></div>
+    </section>
+
+    <!-- Box di iscrizione newsletter -->
+    <section class="ht-newsletter-box" aria-labelledby="ht-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Dispatches from Heralding Time</p>
+        <h3 id="ht-nl-heading" class="ht-nl-title">Ricevi ogni nuovo saggio nella tua casella</h3>
+        <p class="ht-nl-desc">Esplorazioni sulla filosofia naturale, l'epistemologia e la nascita del pensiero scientifico moderno.</p>
+      </div>
+      <form class="ht-nl-form" action="https://heraldingtime.substack.com" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="La tua email..." 
+            aria-label="Indirizzo email"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Iscriviti</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
+  <!-- Footer condiviso di Backyard -->
   <div id="site-footer"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const dedupeArticles = sourceArticles => {
+      // 1. Mobile Menu Hamburger Toggle
+      const hamburgerBtn = document.getElementById('ht-hamburger-btn');
+      const navMenu = document.getElementById('ht-nav-menu');
+
+      if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+          const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+          hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('open');
+        });
+
+        // Chiudi menu con tasto Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('open');
+            hamburgerBtn.focus();
+          }
+        });
+
+        // Chiudi menu cliccando fuori
+        document.addEventListener('click', (e) => {
+          if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('open');
+          }
+        });
+      }
+
+      // 2. Elaborazione e deduplicazione articoli
+      const dedupeArticles = (source) => {
         const scoreArticle = article => {
           const file = ((article && article.markdownFile) || '').toLowerCase();
           if (file.endsWith('.html')) return 2;
@@ -42,17 +193,17 @@
           return 0;
         };
 
-        const normalize = value => (value || '').toString().trim().toLowerCase();
-        const makeKey = article => [
-          normalize(article && article.title),
-          normalize(article && article.date),
-          normalize(article && article.excerpt)
+        const normalize = val => (val || '').toString().trim().toLowerCase();
+        const makeKey = art => [
+          normalize(art && art.title),
+          normalize(art && art.date),
+          normalize(art && art.excerpt)
         ].join('||');
 
         const bestByKey = new Map();
         const idAlias = {};
 
-        Object.entries(sourceArticles || {}).forEach(([id, article]) => {
+        Object.entries(source || {}).forEach(([id, article]) => {
           const candidate = { id, article, score: scoreArticle(article) };
           const key = makeKey(article);
           const existing = bestByKey.get(key);
@@ -62,8 +213,7 @@
             return;
           }
 
-          const keepCandidate = candidate.score > existing.score;
-          if (keepCandidate) {
+          if (candidate.score > existing.score) {
             idAlias[existing.id] = candidate.id;
             bestByKey.set(key, candidate);
           } else {
@@ -79,17 +229,6 @@
         return { articles, idAlias };
       };
 
-      const getCurrentLanguage = () => {
-        const queryLanguage = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
-        return queryLanguage === 'it' ? 'ita' : 'eng';
-      };
-
-      const normalizeArticleLanguage = article => {
-        const value = (article && article.language ? article.language : '').toString().trim().toLowerCase();
-        if (value === 'it' || value === 'ita' || value === 'italian') return 'ita';
-        return 'eng';
-      };
-
       const getArticleSlug = article => {
         const markdownFile = ((article && article.markdownFile) || '').toString();
         const filename = markdownFile.split('/').pop() || '';
@@ -101,208 +240,258 @@
         return slug ? `ht_article.html?article=${encodeURIComponent(slug)}` : 'ht_article.html';
       };
 
-      const createSectionBlock = (title, items, buildHref) => {
-        const pageSize = 8;
-        let page = 0;
-        const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+      // Rilevamento categoria coerente
+      const detectCategory = (article) => {
+        const title = (article.title || '').toLowerCase();
+        const excerpt = (article.excerpt || '').toLowerCase();
+        const lang = (article.language || '').toLowerCase();
 
-        const block = document.createElement('section');
-        block.className = 'publication-section-block';
-        block.innerHTML = `
-          <h2 class="publication-section-title">${title}</h2>
-          <div class="publication-section-rail"></div>
-          <div class="publication-section-controls">
-            <button class="publication-section-nav prev" type="button" aria-label="Show previous posts">Previous</button>
-            <span class="publication-section-page"></span>
-            <button class="publication-section-nav next" type="button" aria-label="Show next posts">Next</button>
-          </div>
-        `;
-
-        const rail = block.querySelector('.publication-section-rail');
-        const prev = block.querySelector('.publication-section-nav.prev');
-        const next = block.querySelector('.publication-section-nav.next');
-        const pageLabel = block.querySelector('.publication-section-page');
-
-        const renderPage = () => {
-          rail.innerHTML = '';
-          const start = page * pageSize;
-          const pageItems = items.slice(start, start + pageSize);
-
-          pageItems.forEach(({ id, article }) => {
-            const card = document.createElement('a');
-            card.className = 'publication-small-card';
-            card.href = buildHref(id, article);
-
-            const imageMarkup = article.image
-              ? `<img src="${article.image}" alt="${article.title}" class="publication-small-image">`
-              : '<div class="publication-small-image publication-small-image-empty" aria-hidden="true"></div>';
-
-            card.innerHTML = `
-              ${imageMarkup}
-              <div class="publication-small-content">
-                <h3 class="publication-small-title">${article.title}</h3>
-                <p class="publication-small-excerpt">${article.excerpt || ''}</p>
-              </div>
-            `;
-            rail.appendChild(card);
-          });
-
-          prev.disabled = page <= 0;
-          next.disabled = page >= totalPages - 1;
-          if (pageLabel) pageLabel.textContent = `${page + 1} / ${totalPages}`;
-        };
-
-        prev.addEventListener('click', () => {
-          if (page <= 0) return;
-          page -= 1;
-          renderPage();
-        });
-
-        next.addEventListener('click', () => {
-          if (page >= totalPages - 1) return;
-          page += 1;
-          renderPage();
-        });
-
-        if (totalPages <= 1) {
-          prev.style.visibility = 'hidden';
-          next.style.visibility = 'hidden';
+        if (title.includes('atomos')) {
+          return 'ATOMOS';
         }
-
-        renderPage();
-        return block;
+        if (excerpt.includes('motion of the earth') || excerpt.includes('sul moto della terra')) {
+          return lang.includes('ita') ? 'SUL MOTO DELLA TERRA' : 'ON THE MOTION OF THE EARTH';
+        }
+        if (title.includes('cicloide') || title.includes('cycloid')) {
+          return lang.includes('ita') ? 'STORIA DELLA SCIENZA' : 'HISTORY OF SCIENCE';
+        }
+        if (title.includes('natale') || title.includes('christmas')) {
+          return lang.includes('ita') ? 'ASTRONOMIA' : 'ASTRONOMY';
+        }
+        if (title.includes('parmenide') || title.includes('parmenides') || title.includes('talete') || title.includes('thales') || title.includes('anassimandro') || title.includes('anaximander')) {
+          return lang.includes('ita') ? 'FILOSOFIA ANTICA' : 'ANCIENT PHILOSOPHY';
+        }
+        return lang.includes('ita') ? 'SAGGIO' : 'ESSAY';
       };
 
-      const sectionsContainer = document.getElementById('ht-sections');
-      const featured = document.getElementById('ht-featured');
-      const footerArchive = document.getElementById('ht-footer-archive');
-      const currentLanguage = getCurrentLanguage();
-      const deduped = dedupeArticles(window.HT_ARTICLES || {});
-      const articles = deduped.articles;
-      const ids = Object.keys(articles).sort((a, b) => {
-        const da = new Date(articles[a].date || 0);
-        const db = new Date(articles[b].date || 0);
+      // Calcolo tempo di lettura stimato
+      const estimateReadTime = (article) => {
+        const lang = (article.language || '').toLowerCase();
+        const words = ((article.title || '') + ' ' + (article.excerpt || '')).split(/\s+/).length;
+        // Default medio stimato per i saggi di Heralding Time: 4-6 minuti
+        const minutes = Math.max(3, Math.min(8, Math.round(words / 15) + 3));
+        return lang.includes('ita') ? `${minutes} MIN LETTURA` : `${minutes} MIN READ`;
+      };
+
+      // Formattazione data accessibile
+      const formatDisplayDate = (dateStr, lang) => {
+        if (!dateStr) return '';
+        try {
+          const date = new Date(dateStr);
+          if (isNaN(date.getTime())) return dateStr;
+          const isIta = (lang || '').toLowerCase().includes('ita');
+          const monthsIta = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
+          const monthsEng = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+          const months = isIta ? monthsIta : monthsEng;
+          return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        } catch (e) {
+          return dateStr;
+        }
+      };
+
+      // Stato applicazione
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialLangParam = urlParams.get('lang');
+      let currentLang = initialLangParam === 'en' ? 'eng' : (initialLangParam === 'it' ? 'ita' : 'all');
+      let currentFilter = 'all';
+
+      const dedupedData = dedupeArticles(window.HT_ARTICLES || {});
+      const allArticles = dedupedData.articles;
+      const allIds = Object.keys(allArticles).sort((a, b) => {
+        const da = new Date(allArticles[a].date || 0);
+        const db = new Date(allArticles[b].date || 0);
         return db - da;
       });
 
-      const languageIds = ids.filter(id => normalizeArticleLanguage(articles[id]) === currentLanguage);
+      const featuredContainer = document.getElementById('ht-featured-container');
+      const gridContainer = document.getElementById('ht-articles-grid');
+      const countEl = document.getElementById('ht-articles-count');
+      const langButtons = document.querySelectorAll('.ht-lang-btn');
+      const filterButtons = document.querySelectorAll('.ht-filter-tag');
 
-      if (!languageIds.length) {
-        featured.innerHTML = '<p>No posts yet.</p>';
-        return;
-      }
-
-      const [latestId] = languageIds;
-      const latest = articles[latestId];
-      const welcomeId = languageIds.find(id => ((articles[id].title || '').toLowerCase() === 'welcome to heralding time'));
-      const welcomeArticle = welcomeId ? articles[welcomeId] : null;
-
-      featured.innerHTML = `
-        <a class="publication-featured-card" href="${buildArticleHref(latest)}">
-          ${latest.image ? `<img src="${latest.image}" alt="${latest.title}" class="publication-featured-image">` : '<div class="publication-featured-image publication-featured-image-empty"></div>'}
-          <div class="publication-featured-content">
-            <p class="publication-featured-meta">Latest</p>
-            <h2 class="publication-featured-title">${latest.title}</h2>
-            <p class="publication-featured-excerpt">${latest.excerpt || ''}</p>
-          </div>
-        </a>
-      `;
-
-      const sections = [
-        {
-          key: 'atomos',
-          title: 'atomos',
-          match: article => (article.title || '').toLowerCase().includes('atomos'),
-          splitByLanguage: true,
-          splitLabels: {
-            en: 'atomos',
-            it: 'atomos'
-          }
-        },
-        {
-          key: 'motion_en',
-          title: 'on the motion of the earth',
-          match: article => {
-            const excerpt = (article.excerpt || '').toLowerCase();
-            return excerpt.includes('on the motion of the earth');
-          }
-        },
-        {
-          key: 'essays',
-          title: 'essay',
-          match: article => {
-            const excerpt = (article.excerpt || '').toLowerCase();
-            const title = (article.title || '').toLowerCase();
-            return !title.includes('atomos')
-              && !excerpt.includes('on the motion of the earth')
-              && !excerpt.includes('sul moto della terra');
-          }
-        },
-        {
-          key: 'motion_it',
-          title: 'sul moto della terra',
-          match: article => {
-            const excerpt = (article.excerpt || '').toLowerCase();
-            return excerpt.includes('sul moto della terra');
-          }
-        }
-      ];
-
-      const sectionBuckets = new Map();
-      sections.forEach(section => sectionBuckets.set(section.key, []));
-
-      languageIds.forEach(id => {
-        if (id === welcomeId) return;
-        const article = articles[id];
-        const matched = sections.find(section => section.match(article));
-        if (matched) sectionBuckets.get(matched.key).push({ id, article });
-      });
-
-      sections.forEach(section => {
-        const items = sectionBuckets.get(section.key) || [];
-        if (!items.length) return;
-
-        const byLanguage = { eng: [], ita: [] };
-        items.forEach(item => {
-          byLanguage[normalizeArticleLanguage(item.article)].push(item);
+      // Funzione di rendering principale
+      function renderArticles() {
+        // 1. Filtra per lingua
+        let filteredIds = allIds.filter(id => {
+          const art = allArticles[id];
+          const artLang = (art.language || 'eng').toLowerCase();
+          if (currentLang === 'all') return true;
+          if (currentLang === 'ita') return artLang === 'ita' || artLang === 'it';
+          if (currentLang === 'eng') return artLang === 'eng' || artLang === 'en';
+          return true;
         });
 
-        if (section.splitByLanguage || section.splitLabels) {
-          const languageItems = byLanguage[currentLanguage] || [];
-          if (!languageItems.length) return;
+        // 2. Filtra per serie / categoria
+        if (currentFilter !== 'all') {
+          filteredIds = filteredIds.filter(id => {
+            const art = allArticles[id];
+            const title = (art.title || '').toLowerCase();
+            const excerpt = (art.excerpt || '').toLowerCase();
+            if (currentFilter === 'atomos') {
+              return title.includes('atomos');
+            }
+            if (currentFilter === 'motion') {
+              return excerpt.includes('motion of the earth') || excerpt.includes('sul moto della terra');
+            }
+            if (currentFilter === 'filosofia') {
+              return !title.includes('atomos') && !excerpt.includes('motion of the earth') && !excerpt.includes('sul moto della terra');
+            }
+            return true;
+          });
+        }
 
-          const title = section.splitLabels
-            ? (currentLanguage === 'ita' ? section.splitLabels.it : section.splitLabels.en)
-            : section.title;
+        // Aggiorna contatore
+        const labelSaggi = (currentLang === 'eng') ? 'ESSAYS' : 'SAGGI';
+        if (countEl) {
+          countEl.textContent = `${filteredIds.length} ${labelSaggi}`;
+        }
 
-          sectionsContainer.appendChild(
-            createSectionBlock(title, languageItems, (_id, article) => buildArticleHref(article))
-          );
+        // Rendering articolo in evidenza (il primo solo se siamo in vista 'all' o lingua singola)
+        if (filteredIds.length > 0 && currentFilter === 'all') {
+          const featuredId = filteredIds[0];
+          const featuredArt = allArticles[featuredId];
+          const featuredHref = buildArticleHref(featuredArt);
+          const featuredCategory = detectCategory(featuredArt);
+          const featuredDate = formatDisplayDate(featuredArt.date, featuredArt.language);
+          const featuredReadTime = estimateReadTime(featuredArt);
+          const isIta = (featuredArt.language || '').toLowerCase().includes('ita');
+          const readActionText = isIta ? 'Leggi il saggio' : 'Read essay';
 
+          featuredContainer.innerHTML = `
+            <article class="ht-featured-article" aria-label="Ultimo saggio in evidenza">
+              <div class="ht-featured-grid">
+                <a href="${featuredHref}" class="ht-featured-media-link" tabindex="-1" aria-hidden="true">
+                  <div class="ht-featured-media-wrap">
+                    ${featuredArt.image 
+                      ? `<img src="${featuredArt.image}" alt="Copertina: ${featuredArt.title}" class="ht-featured-image" loading="lazy">` 
+                      : `<div class="ht-card-media-fallback" aria-hidden="true">HT</div>`
+                    }
+                  </div>
+                </a>
+                <div class="ht-featured-content">
+                  <span class="ht-featured-badge">In Evidenza · ${featuredCategory}</span>
+                  <div class="ht-card-meta">
+                    <time datetime="${featuredArt.date}">${featuredDate}</time>
+                    <span class="ht-meta-dot" aria-hidden="true">•</span>
+                    <span>${featuredReadTime}</span>
+                  </div>
+                  <h2 class="ht-featured-title">
+                    <a href="${featuredHref}">${featuredArt.title}</a>
+                  </h2>
+                  <p class="ht-featured-excerpt">${featuredArt.excerpt || ''}</p>
+                  <div class="ht-card-footer">
+                    <a href="${featuredHref}" class="ht-btn-primary">
+                      <span>${readActionText}</span>
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+          featuredContainer.style.display = 'block';
+        } else {
+          featuredContainer.innerHTML = '';
+          featuredContainer.style.display = 'none';
+        }
+
+        // Se non ci sono articoli
+        if (filteredIds.length === 0) {
+          gridContainer.innerHTML = `
+            <div class="ht-empty-state">
+              <p>Nessun saggio trovato per questo filtro.</p>
+            </div>
+          `;
           return;
         }
 
-        sectionsContainer.appendChild(
-          createSectionBlock(section.title, items, (_id, article) => buildArticleHref(article))
-        );
+        // Griglia con gli articoli rimanenti (o tutti se c'è un filtro attivo)
+        const gridIds = (currentFilter === 'all' && filteredIds.length > 1) 
+          ? filteredIds.slice(1) 
+          : filteredIds;
+
+        gridContainer.innerHTML = gridIds.map((id, index) => {
+          const art = allArticles[id];
+          const href = buildArticleHref(art);
+          const category = detectCategory(art);
+          const dateFormatted = formatDisplayDate(art.date, art.language);
+          const readTime = estimateReadTime(art);
+          const isIta = (art.language || '').toLowerCase().includes('ita');
+          const readLabel = isIta ? 'Leggi' : 'Read';
+          const titleId = `ht-title-${id}-${index}`;
+
+          const mediaMarkup = art.image 
+            ? `<img src="${art.image}" alt="Illustrazione per ${art.title}" class="ht-card-image" loading="lazy">`
+            : `<div class="ht-card-media-fallback" aria-hidden="true">HT</div>`;
+
+          return `
+            <article class="ht-article-card" aria-labelledby="${titleId}">
+              <a href="${href}" class="ht-card-media-link" tabindex="-1" aria-hidden="true">
+                <div class="ht-card-media-wrap">
+                  ${mediaMarkup}
+                </div>
+              </a>
+              <div class="ht-card-content">
+                <div class="ht-card-meta">
+                  <span class="ht-card-category">${category}</span>
+                  <span class="ht-meta-dot" aria-hidden="true">•</span>
+                  <time class="ht-card-date" datetime="${art.date || ''}">${dateFormatted}</time>
+                  <span class="ht-meta-dot" aria-hidden="true">•</span>
+                  <span class="ht-card-readtime">${readTime}</span>
+                </div>
+                <h3 id="${titleId}" class="ht-card-title">
+                  <a href="${href}">${art.title}</a>
+                </h3>
+                <p class="ht-card-excerpt">${art.excerpt || ''}</p>
+                <div class="ht-card-footer">
+                  <a href="${href}" class="ht-card-read-link" aria-label="${readLabel}: ${art.title}">
+                    <span>${readLabel}</span>
+                    <span class="ht-arrow" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Event listener lingua
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          langButtons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          currentLang = btn.getAttribute('data-lang');
+          renderArticles();
+        });
       });
 
-      if (welcomeArticle && footerArchive) {
-        footerArchive.innerHTML = `
-          <h2 class="publication-section-title">from the archive</h2>
-          <div class="publication-section-rail">
-            <a class="publication-small-card" href="${buildArticleHref(welcomeArticle)}">
-              ${welcomeArticle.image
-                ? `<img src="${welcomeArticle.image}" alt="${welcomeArticle.title}" class="publication-small-image">`
-                : '<div class="publication-small-image publication-small-image-empty" aria-hidden="true"></div>'}
-              <div class="publication-small-content">
-                <h3 class="publication-small-title">${welcomeArticle.title}</h3>
-                <p class="publication-small-excerpt">${welcomeArticle.excerpt || ''}</p>
-              </div>
-            </a>
-          </div>
-        `;
-      }
+      // Event listener filtro serie
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter');
+          renderArticles();
+        });
+      });
+
+      // Imposta pulsante lingua iniziale attivo
+      langButtons.forEach(btn => {
+        if (btn.getAttribute('data-lang') === currentLang) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      // Primo render
+      renderArticles();
     });
   </script>
 
