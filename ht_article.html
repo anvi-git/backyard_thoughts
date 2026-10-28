@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heralding Time — Saggio</title>
+  <title>Heralding Time — Essay</title>
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
 
-  <!-- Typography: Playfair Display, JetBrains Mono, EB Garamond -->
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ht.css">
@@ -18,13 +18,13 @@
   <script src="posts/article_interruption.js"></script>
 </head>
 <body class="ht-body">
-  <a href="#main-content" class="ht-skip-link">Salta al contenuto principale</a>
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
 
-  <!-- 5. Navigazione sottile con logo a sinistra e link a destra -->
+  <!-- Thin navigation bar -->
   <header class="ht-navbar" role="banner">
     <div class="ht-nav-container">
       <div class="ht-nav-brand">
-        <a href="index.html" class="ht-back-to-backyard" title="Torna alla homepage di Backyard">← Backyard</a>
+        <a href="index.html" class="ht-back-to-backyard" title="Return to Backyard homepage">← Backyard</a>
         <span class="ht-nav-divider" aria-hidden="true">/</span>
         <a href="ht.html" class="ht-nav-logo" aria-label="Heralding Time Home">
           HERALDING TIME
@@ -32,14 +32,14 @@
       </div>
 
       <!-- Desktop Links -->
-      <nav class="ht-nav-links" id="ht-nav-menu" aria-label="Navigazione Heralding Time">
-        <a href="ht.html#archivio" class="ht-nav-link">Archivio</a>
-        <a href="about.html" class="ht-nav-link">Chi siamo</a>
-        <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer" class="ht-nav-link ht-nav-subscribe">Iscriviti</a>
+      <nav class="ht-nav-links" id="ht-nav-menu" aria-label="Heralding Time Navigation">
+        <a href="ht.html#archivio" class="ht-nav-link">Archive</a>
+        <a href="about.html" class="ht-nav-link">About</a>
+        <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer" class="ht-nav-link ht-nav-subscribe">Subscribe</a>
       </nav>
 
       <!-- Mobile Hamburger Button -->
-      <button class="ht-hamburger" id="ht-hamburger-btn" type="button" aria-expanded="false" aria-controls="ht-nav-menu" aria-label="Apri menu di navigazione">
+      <button class="ht-hamburger" id="ht-hamburger-btn" type="button" aria-expanded="false" aria-controls="ht-nav-menu" aria-label="Open navigation menu">
         <span class="ht-hamburger-line" aria-hidden="true"></span>
         <span class="ht-hamburger-line" aria-hidden="true"></span>
         <span class="ht-hamburger-line" aria-hidden="true"></span>
@@ -47,18 +47,18 @@
     </div>
   </header>
 
-  <!-- Main Article Layout -->
+  <!-- Main Article Layout: Centered 50% width container -->
   <main id="main-content" class="ht-article-layout">
     
-    <nav class="ht-article-back-nav" aria-label="Navigazione ritorno">
+    <nav class="ht-article-back-nav" aria-label="Return navigation">
       <a href="ht.html#archivio" class="ht-back-btn">
         <span aria-hidden="true">←</span>
-        <span>Torna a tutti i saggi</span>
+        <span>Back to all essays</span>
       </a>
     </nav>
 
     <article class="ht-single-article">
-      <!-- Intestazione articolo -->
+      <!-- Article Header -->
       <header class="ht-article-header">
         <div class="ht-article-eyebrow-row">
           <span class="ht-article-badge">FROM BACKYARD</span>
@@ -66,7 +66,7 @@
           <span class="ht-article-category" id="ht-article-category">HERALDING TIME</span>
         </div>
 
-        <h1 class="ht-article-headline" id="ht-article-title">Caricamento in corso...</h1>
+        <h1 class="ht-article-headline" id="ht-article-title">Loading essay...</h1>
 
         <p class="ht-article-deck" id="ht-article-deck" style="display: none;"></p>
 
@@ -80,36 +80,36 @@
           </div>
           <div class="ht-article-meta-share">
             <a href="https://heraldingtime.substack.com" target="_blank" rel="noopener noreferrer">
-              Substack Originale <span aria-hidden="true">↗</span>
+              Original on Substack <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
       </header>
 
-      <!-- Immagine di copertina (se presente) -->
+      <!-- Cover Image (if available) -->
       <div id="ht-article-cover-wrap" class="ht-article-cover-wrap" style="display: none;">
         <img id="ht-article-cover-img" src="" alt="" loading="eager">
       </div>
 
-      <!-- Testo del saggio a 17px con interlinea 1.6 -->
+      <!-- Essay body text: 50% width centered, vertical left line, drop cap on first letter -->
       <div id="ht-article-body" class="ht-article-body"></div>
     </article>
 
-    <!-- Sezione "Leggi anche..." con griglia responsiva 3/2/1 colonne -->
+    <!-- "Read also..." Section -->
     <section class="ht-related-section" aria-labelledby="ht-related-heading">
       <div class="ht-related-header">
-        <h2 id="ht-related-heading" class="ht-related-title">Leggi anche...</h2>
-        <a href="ht.html#archivio" class="ht-back-btn">Vedi tutti <span aria-hidden="true">→</span></a>
+        <h2 id="ht-related-heading" class="ht-related-title">Read also...</h2>
+        <a href="ht.html#archivio" class="ht-back-btn">View all <span aria-hidden="true">→</span></a>
       </div>
       <div id="ht-related-grid" class="ht-related-grid"></div>
     </section>
 
-    <!-- Box iscrizione newsletter Heralding Time -->
+    <!-- Newsletter Callout Box -->
     <section class="ht-newsletter-box" aria-labelledby="ht-article-nl-heading">
       <div class="ht-nl-text">
         <p class="ht-nl-kicker">Heralding Time Substack</p>
-        <h3 id="ht-article-nl-heading" class="ht-nl-title">Ti è piaciuto questo saggio?</h3>
-        <p class="ht-nl-desc">Iscriviti gratuitamente per ricevere i prossimi capitoli sulla storia della scienza e del pensiero direttamente nella tua casella di posta.</p>
+        <h3 id="ht-article-nl-heading" class="ht-nl-title">Enjoyed this essay?</h3>
+        <p class="ht-nl-desc">Subscribe for free to receive future essays on the history of science, cosmology, and philosophy delivered straight to your inbox.</p>
       </div>
       <form class="ht-nl-form" action="https://heraldingtime.substack.com" method="get" target="_blank" rel="noopener noreferrer">
         <div class="ht-nl-input-row">
@@ -117,11 +117,11 @@
             type="email" 
             name="email" 
             class="ht-nl-input" 
-            placeholder="La tua email..." 
-            aria-label="Indirizzo email"
+            placeholder="Your email address..." 
+            aria-label="Email address"
             required
           >
-          <button type="submit" class="ht-nl-submit">Iscriviti</button>
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
         </div>
       </form>
     </section>
@@ -149,7 +149,7 @@
     function showArticleError(containerId, message) {
       const container = document.getElementById(containerId);
       if (!container) return;
-      container.innerHTML = `<p class="ht-empty-state">Impossibile caricare il testo del saggio. ${message}</p>`;
+      container.innerHTML = `<p class="ht-empty-state">Unable to load essay content. ${message}</p>`;
     }
 
     function plainTextLength(input) {
@@ -176,7 +176,7 @@
       return `
         <div class="archive-short-content-note">
           ${excerptHtml}
-          <p><em>Nota di archivio: questo file contiene attualmente un'anteprima breve. File sorgente: ${escapeHtml(markdownFile)}.</em></p>
+          <p><em>Archive note: this file currently contains a short preview. Source file: ${escapeHtml(markdownFile)}.</em></p>
         </div>
       `;
     }
@@ -220,6 +220,12 @@
       }
 
       container.innerHTML = renderedHtml + shortNote;
+
+      // Ensure the first paragraph has the drop cap class
+      const firstParagraph = container.querySelector('p');
+      if (firstParagraph) {
+        firstParagraph.classList.add('ht-first-p');
+      }
     }
 
     function removeDuplicateTitle(containerId, pageTitle) {
@@ -248,7 +254,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      // 1. Mobile Menu Hamburger Toggle
+      // Mobile Hamburger Toggle
       const hamburgerBtn = document.getElementById('ht-hamburger-btn');
       const navMenu = document.getElementById('ht-nav-menu');
 
@@ -335,41 +341,36 @@
         const detectCategory = (article) => {
           const title = (article.title || '').toLowerCase();
           const excerpt = (article.excerpt || '').toLowerCase();
-          const lang = (article.language || '').toLowerCase();
 
           if (title.includes('atomos')) return 'ATOMOS';
           if (excerpt.includes('motion of the earth') || excerpt.includes('sul moto della terra')) {
-            return lang.includes('ita') ? 'SUL MOTO DELLA TERRA' : 'ON THE MOTION OF THE EARTH';
+            return 'ON THE MOTION OF THE EARTH';
           }
           if (title.includes('cicloide') || title.includes('cycloid')) {
-            return lang.includes('ita') ? 'STORIA DELLA SCIENZA' : 'HISTORY OF SCIENCE';
+            return 'HISTORY OF SCIENCE';
           }
           if (title.includes('natale') || title.includes('christmas')) {
-            return lang.includes('ita') ? 'ASTRONOMIA' : 'ASTRONOMY';
+            return 'ASTRONOMY';
           }
           if (title.includes('parmenide') || title.includes('parmenides') || title.includes('talete') || title.includes('thales') || title.includes('anassimandro') || title.includes('anaximander')) {
-            return lang.includes('ita') ? 'FILOSOFIA ANTICA' : 'ANCIENT PHILOSOPHY';
+            return 'ANCIENT PHILOSOPHY';
           }
-          return lang.includes('ita') ? 'SAGGIO' : 'ESSAY';
+          return 'ESSAY';
         };
 
         const estimateReadTime = (article) => {
-          const lang = (article.language || '').toLowerCase();
           const words = ((article.title || '') + ' ' + (article.excerpt || '')).split(/\s+/).length;
           const minutes = Math.max(3, Math.min(8, Math.round(words / 15) + 3));
-          return lang.includes('ita') ? `${minutes} MIN LETTURA` : `${minutes} MIN READ`;
+          return `${minutes} MIN READ`;
         };
 
-        const formatDisplayDate = (dateStr, lang) => {
+        const formatDisplayDate = (dateStr) => {
           if (!dateStr) return '';
           try {
             const date = new Date(dateStr);
             if (isNaN(date.getTime())) return dateStr;
-            const isIta = (lang || '').toLowerCase().includes('ita');
-            const monthsIta = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
             const monthsEng = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-            const months = isIta ? monthsIta : monthsEng;
-            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            return `${date.getDate()} ${monthsEng[date.getMonth()]} ${date.getFullYear()}`;
           } catch (e) {
             return dateStr;
           }
@@ -392,12 +393,12 @@
         const article = articles[id] || articles[fallbackId];
 
         if (!article) {
-          showArticleError(bodyContainerId, 'Post non trovato.');
+          showArticleError(bodyContainerId, 'Post not found.');
           return;
         }
 
-        // Popola metadati articolo
-        document.title = `${article.title} — HERALDING TIME`;
+        // Populate metadata
+        document.title = `${article.title.toUpperCase()} — HERALDING TIME`;
         document.getElementById('ht-article-title').textContent = article.title;
         
         const category = detectCategory(article);
@@ -410,21 +411,21 @@
         }
 
         const dateEl = document.getElementById('ht-article-date');
-        dateEl.textContent = formatDisplayDate(article.date, article.language);
+        dateEl.textContent = formatDisplayDate(article.date);
         dateEl.setAttribute('datetime', article.date || '');
 
         document.getElementById('ht-article-readtime').textContent = estimateReadTime(article);
 
-        // Copertina
+        // Cover image
         if (article.image) {
           const coverWrap = document.getElementById('ht-article-cover-wrap');
           const coverImg = document.getElementById('ht-article-cover-img');
           coverImg.src = article.image;
-          coverImg.alt = `Copertina: ${article.title}`;
+          coverImg.alt = `Cover: ${article.title}`;
           coverWrap.style.display = 'block';
         }
 
-        // Carica e renderizza il corpo dell'articolo
+        // Fetch & render body
         try {
           const mdText = await getArticleBody(article.markdownFile);
           renderArticleBody(bodyContainerId, mdText, article);
@@ -434,7 +435,7 @@
           showArticleError(bodyContainerId, `File: ${article.markdownFile}.`);
         }
 
-        // Sezione "Leggi anche..." (Articoli correlati) in griglia 3/2/1 colonne
+        // Related essays section
         const relatedGrid = document.getElementById('ht-related-grid');
         if (relatedGrid) {
           const ids = Object.keys(articles).sort((a, b) => {
@@ -443,14 +444,12 @@
             return db - da;
           });
 
-          // Mostra saggi correlati (stessa categoria o serie, oppure i più recenti escluso quello corrente)
           let relatedIds = ids.filter(artId => {
             if (artId === id) return false;
             const other = articles[artId];
             return detectCategory(other) === category;
           });
 
-          // Se sono meno di 3, aggiungi altri saggi recenti
           if (relatedIds.length < 3) {
             ids.forEach(artId => {
               if (artId !== id && !relatedIds.includes(artId)) {
@@ -466,14 +465,12 @@
               const relArt = articles[relId];
               const relHref = buildArticleHref(relArt);
               const relCat = detectCategory(relArt);
-              const relDate = formatDisplayDate(relArt.date, relArt.language);
+              const relDate = formatDisplayDate(relArt.date);
               const relRead = estimateReadTime(relArt);
-              const isIta = (relArt.language || '').toLowerCase().includes('ita');
-              const readLabel = isIta ? 'Leggi' : 'Read';
               const relTitleId = `ht-rel-title-${relId}-${idx}`;
 
               const mediaMarkup = relArt.image
-                ? `<img src="${relArt.image}" alt="Copertina: ${relArt.title}" class="ht-card-image" loading="lazy">`
+                ? `<img src="${relArt.image}" alt="Cover: ${relArt.title}" class="ht-card-image" loading="lazy">`
                 : `<div class="ht-card-media-fallback" aria-hidden="true">HT</div>`;
 
               return `
@@ -496,8 +493,8 @@
                     </h3>
                     <p class="ht-card-excerpt">${relArt.excerpt || ''}</p>
                     <div class="ht-card-footer">
-                      <a href="${relHref}" class="ht-card-read-link" aria-label="${readLabel}: ${relArt.title}">
-                        <span>${readLabel}</span>
+                      <a href="${relHref}" class="ht-card-read-link" aria-label="Read: ${relArt.title}">
+                        <span>Read</span>
                         <span class="ht-arrow" aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -506,12 +503,12 @@
               `;
             }).join('');
           } else {
-            relatedGrid.innerHTML = '<p class="ht-empty-state">Nessun altro saggio correlato al momento.</p>';
+            relatedGrid.innerHTML = '<p class="ht-empty-state">No other related essays at this time.</p>';
           }
         }
 
       } catch (error) {
-        showArticleError(bodyContainerId, `Errore di caricamento: ${error.message}`);
+        showArticleError(bodyContainerId, `Loading error: ${error.message}`);
       }
     });
   </script>

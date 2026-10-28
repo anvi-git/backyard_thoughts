@@ -50,11 +50,11 @@
       event.preventDefault();
       const emailInput = form.querySelector('input[type="email"]');
       const email = emailInput ? emailInput.value.trim() : '';
-      const baseUrl = 'https://substack.com/@backyardmagazine';
+      const baseUrl = form.getAttribute('action') || 'https://substack.com/@backyardmagazine';
       const redirectUrl = email
         ? `${baseUrl}?email=${encodeURIComponent(email)}`
         : baseUrl;
-      window.location.href = redirectUrl;
+      window.open(redirectUrl, '_blank');
     });
   }
 

@@ -19,66 +19,6 @@
   <!-- Main content -->
   <main id="main-content" class="page-wrapper">
 
-    <!-- ── Search across Backyard publications ─────────── -->
-    <section class="site-search-section" aria-label="Search all Backyard publications">
-      <div class="site-search-wrapper">
-        <div class="site-search-header">
-          <span class="site-search-kicker">Archive Search</span>
-          <span class="site-search-count-badge" id="search-total-count">Over 100 articles</span>
-        </div>
-
-        <div class="site-search-bar">
-          <div class="site-search-input-wrap">
-            <svg class="site-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input 
-              type="text" 
-              id="site-search-input" 
-              class="site-search-input" 
-              placeholder="Search across all publications (e.g. cycloid, star, James Blake, climate)..." 
-              autocomplete="off" 
-              aria-label="Search articles and topics"
-            >
-            <button type="button" id="site-search-clear" class="site-search-clear-btn" aria-label="Clear search" style="display: none;">&times;</button>
-          </div>
-          <button type="button" id="site-search-btn" class="site-search-btn">Search</button>
-        </div>
-
-        <!-- Filter pills -->
-        <div class="site-search-filters" role="tablist" aria-label="Filter by publication">
-          <span class="site-search-filter-label">Filter:</span>
-          <button type="button" class="search-filter-pill active" data-filter="all">All</button>
-          <button type="button" class="search-filter-pill" data-filter="Heralding Time">Heralding Time</button>
-          <button type="button" class="search-filter-pill" data-filter="Last Scattering Surface">Last Scattering Surface</button>
-          <button type="button" class="search-filter-pill" data-filter="Space of Sound">Space of Sound</button>
-          <button type="button" class="search-filter-pill" data-filter="The Blog">The Blog</button>
-          <button type="button" class="search-filter-pill" data-filter="Observe the Fire">Observe the Fire</button>
-        </div>
-
-        <!-- Quick topic chips -->
-        <div class="site-search-topics">
-          <span class="site-search-topics-label">Suggested topics:</span>
-          <button type="button" class="search-topic-tag" data-topic="cycloid">#cycloid</button>
-          <button type="button" class="search-topic-tag" data-topic="cosmology">#cosmology</button>
-          <button type="button" class="search-topic-tag" data-topic="sound orbits">#sound orbits</button>
-          <button type="button" class="search-topic-tag" data-topic="temperature anomaly">#climate</button>
-          <button type="button" class="search-topic-tag" data-topic="parmenides">#parmenides</button>
-          <button type="button" class="search-topic-tag" data-topic="star">#stars</button>
-        </div>
-
-        <!-- Search results container -->
-        <div id="site-search-results" class="site-search-results" style="display: none;">
-          <div class="search-results-header">
-            <h3 class="search-results-title" id="search-results-summary">Found 0 articles</h3>
-            <button type="button" id="search-close-btn" class="search-close-link" aria-label="Close search results">Close &times;</button>
-          </div>
-          <div id="search-results-list" class="search-results-grid"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ── Feature / Hero story ─────────────────────────── -->
     <section class="feature-section" aria-label="Featured article">
       <div class="feature-grid">
@@ -359,7 +299,6 @@
   <script src="lss_data.js"></script>
   <script src="spacesound_data.js"></script>
   <script src="blog_data.js"></script>
-  <script src="search.js"></script>
   <script src="layout.js"></script>
   <script src="headerScrollState.js" defer></script>
 </body>

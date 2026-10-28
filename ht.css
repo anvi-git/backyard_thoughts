@@ -21,8 +21,9 @@
   --ht-accent: #d98f55;
   --ht-accent-hover: #b86b32;
   --ht-accent-accessible: #9e4f16;
-  --ht-font-serif-display: 'Playfair Display', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
-  --ht-font-serif-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --ht-font-title: 'Bebas Neue', sans-serif;
+  --ht-font-serif-display: 'Bebas Neue', 'Playfair Display', Georgia, sans-serif;
+  --ht-font-serif-body: 'JetBrains Mono', Consolas, 'Courier New', monospace;
   --ht-font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
   --ht-max-width: 1200px;
 }
@@ -36,9 +37,9 @@ body.ht-body {
   padding: 0;
   background-color: var(--ht-white);
   color: var(--ht-black);
-  font-family: var(--ht-font-serif-body);
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: var(--ht-font-mono);
+  font-size: 15px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -288,11 +289,11 @@ body.ht-body {
 /* Logo "HERALDING TIME" in serif ad alto contrasto */
 .ht-hero-title {
   margin: 0 0 1rem;
-  font-family: var(--ht-font-serif-display);
-  font-size: clamp(2.6rem, 7vw, 5rem);
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  line-height: 1.05;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
   text-transform: uppercase;
   color: var(--ht-black);
 }
@@ -304,13 +305,12 @@ body.ht-body {
   margin: 1.25rem auto;
 }
 
-/* Descrizione breve della pubblicazione */
+/* Publication short description in JetBrains Mono */
 .ht-hero-description {
   margin: 0 auto 1.8rem;
-  font-family: var(--ht-font-serif-body);
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
-  font-style: italic;
-  line-height: 1.5;
+  font-family: var(--ht-font-mono);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.6;
   color: #333333;
   max-width: 640px;
 }
@@ -395,9 +395,11 @@ body.ht-body {
 
 .ht-archive-title {
   margin: 0;
-  font-family: var(--ht-font-serif-display);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ht-black);
 }
 
@@ -509,10 +511,12 @@ body.ht-body {
 
 .ht-featured-title {
   margin: 0 0 1rem;
-  font-family: var(--ht-font-serif-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-  font-weight: 700;
-  line-height: 1.22;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .ht-featured-title a {
   color: var(--ht-black);
@@ -525,10 +529,10 @@ body.ht-body {
 
 .ht-featured-excerpt {
   margin: 0 0 1.5rem;
-  font-family: var(--ht-font-serif-body);
-  font-size: 18px;
-  line-height: 1.6;
-  color: #2b2b2b;
+  font-family: var(--ht-font-mono);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #333333;
 }
 
 /* Griglia articoli standard: 3 colonne su desktop */
@@ -624,10 +628,12 @@ body.ht-body {
 /* Titoli in serif ad alto contrasto */
 .ht-card-title {
   margin: 0 0 0.65rem;
-  font-family: var(--ht-font-serif-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .ht-card-title a {
   color: var(--ht-black);
@@ -638,13 +644,13 @@ body.ht-body {
   color: var(--ht-accent);
 }
 
-/* Testo corrente in serif a 17px con interlinea 1.6 per lettura lunga */
+/* Card excerpt in JetBrains Mono */
 .ht-card-excerpt {
   margin: 0 0 1.25rem;
-  font-family: var(--ht-font-serif-body);
-  font-size: 17px;
-  line-height: 1.6;
-  color: #2b2b2b;
+  font-family: var(--ht-font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  color: #404040;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -725,17 +731,19 @@ body.ht-body {
 }
 .ht-nl-title {
   margin: 0 0 0.5rem;
-  font-family: var(--ht-font-serif-display);
-  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.05;
   color: var(--ht-black);
 }
 .ht-nl-desc {
   margin: 0;
-  font-family: var(--ht-font-serif-body);
-  font-size: 17px;
-  line-height: 1.5;
+  font-family: var(--ht-font-mono);
+  font-size: 13.5px;
+  line-height: 1.6;
   color: #444444;
 }
 
@@ -850,13 +858,16 @@ body.ht-body {
 ───────────────────────────────────────────────────────────── */
 
 .ht-article-layout {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: clamp(2rem, 5vw, 4rem) 1.5rem 5rem;
 }
 
 .ht-article-back-nav {
-  margin-bottom: 2rem;
+  width: 50%;
+  min-width: 320px;
+  max-width: 740px;
+  margin: 0 auto 2rem;
 }
 
 .ht-back-btn {
@@ -878,9 +889,12 @@ body.ht-body {
 }
 
 .ht-article-header {
+  width: 50%;
+  min-width: 320px;
+  max-width: 740px;
+  margin: 0 auto 2.5rem;
   border-bottom: 1px solid var(--ht-gray-border);
   padding-bottom: 2rem;
-  margin-bottom: 2.5rem;
 }
 
 .ht-article-eyebrow-row {
@@ -914,23 +928,24 @@ body.ht-body {
   color: var(--ht-accent);
 }
 
+/* 4. Bebas Neue for title */
 .ht-article-headline {
   margin: 0 0 1rem;
-  font-family: var(--ht-font-serif-display);
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.15;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6.5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ht-black);
-  letter-spacing: 0.01em;
 }
 
 .ht-article-deck {
   margin: 0 0 1.5rem;
-  font-family: var(--ht-font-serif-body);
-  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
-  font-style: italic;
-  line-height: 1.5;
-  color: #444444;
+  font-family: var(--ht-font-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a4a4a;
 }
 
 .ht-article-meta-bar {
@@ -962,14 +977,16 @@ body.ht-body {
   color: var(--ht-accent);
 }
 
-/* Cover Media in Article */
+/* Cover Media centered at 50% */
 .ht-article-cover-wrap {
-  width: 100%;
+  width: 50%;
+  min-width: 320px;
+  max-width: 740px;
   aspect-ratio: 16 / 9;
   background: #f0ede6;
   overflow: hidden;
   border: 1px solid var(--ht-gray-border);
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
 }
 .ht-article-cover-wrap img {
   width: 100%;
@@ -978,39 +995,67 @@ body.ht-body {
   display: block;
 }
 
-/* Article Body Typography: 17px, line-height 1.6 in serif */
+/* 2 & 3: Centered 50% width text block with vertical line to the left */
 .ht-article-body {
-  font-family: var(--ht-font-serif-body);
-  font-size: 17px;
-  line-height: 1.6;
-  color: #1a1a1a;
+  width: 50%;
+  min-width: 320px;
   max-width: 740px;
-  margin: 0 auto;
+  margin: 2.5rem auto;
+  border-left: 2px solid var(--ht-black);
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-family: var(--ht-font-mono);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #1a1a1a;
+  box-sizing: border-box;
 }
 
 .ht-article-body p {
   margin: 0 0 1.6rem;
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: var(--ht-font-mono);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #1a1a1a;
+  text-align: left;
+}
+
+/* 1. Drop Cap on the first paragraph of the article */
+.ht-article-body > p:first-of-type::first-letter,
+.ht-article-body p.ht-first-p::first-letter,
+.ht-drop-cap {
+  float: left;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.6rem;
+  line-height: 0.78;
+  padding-top: 6px;
+  padding-right: 14px;
+  padding-bottom: 2px;
+  margin-right: 4px;
+  color: var(--ht-black);
+  text-transform: uppercase;
 }
 
 .ht-article-body h2,
 .ht-article-body h3,
 .ht-article-body h4 {
-  font-family: var(--ht-font-serif-display);
-  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
   color: var(--ht-black);
-  margin-top: 2.8rem;
-  margin-bottom: 1rem;
-  line-height: 1.25;
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .ht-article-body h2 {
-  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-size: 2.3rem;
   border-bottom: 1px solid var(--ht-gray-border);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
 }
 .ht-article-body h3 {
-  font-size: 1.35rem;
+  font-size: 1.8rem;
 }
 
 .ht-article-body a {
@@ -1026,12 +1071,12 @@ body.ht-body {
 }
 
 .ht-article-body blockquote {
-  margin: 2.2rem 0;
-  padding: 0.6rem 0 0.6rem 1.6rem;
+  margin: 2rem 0;
+  padding: 0.75rem 0 0.75rem 1.4rem;
   border-left: 3px solid var(--ht-accent);
   font-style: italic;
-  font-size: 1.15rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: #2f2f2f;
   background: transparent;
 }
@@ -1041,22 +1086,42 @@ body.ht-body {
   height: auto;
   display: block;
   margin: 2.2rem auto;
-  border: 1px solid var(--ht-gray-border-subtle);
+  border: 1px solid var(--ht-gray-border);
 }
 
 .ht-article-body figure {
-  margin: 2.5rem 0;
+  margin: 2.2rem 0;
 }
 .ht-article-body figcaption {
   font-family: var(--ht-font-mono);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   color: var(--ht-gray-warm);
   margin-top: 0.6rem;
-  text-align: center;
   letter-spacing: 0.04em;
 }
 
+@media (max-width: 900px) {
+  .ht-article-back-nav,
+  .ht-article-header,
+  .ht-article-cover-wrap,
+  .ht-article-body {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .ht-article-back-nav,
+  .ht-article-header,
+  .ht-article-cover-wrap,
+  .ht-article-body {
+    width: 95%;
+    padding-left: 1.15rem;
+  }
+  .ht-article-headline {
+    font-size: 2.5rem;
+  }
+}
 .ht-article-body hr {
   border: none;
   border-top: 1px solid var(--ht-gray-border);
@@ -1116,9 +1181,11 @@ body.ht-body {
 
 .ht-related-title {
   margin: 0;
-  font-family: var(--ht-font-serif-display);
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ht-black);
 }
 
