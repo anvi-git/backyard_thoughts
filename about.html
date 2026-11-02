@@ -3,28 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>ABOUT — Backyard</title>
+  <meta name="description" content="About Backyard: an independent digital editorial project covering the history of science, cosmology, music, and climate observations.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="blog_data.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="main-content" class="page-wrapper">
-    <div id="blog-layout">
-      <section id="blog-articles"></section>
+  <!-- Hero with Dot Pattern -->
+  <section class="ht-hero" aria-labelledby="about-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="about-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="about-dot-fade">
+            <radialGradient id="about-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#about-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#about-dot-grid)" mask="url(#about-dot-fade)" />
+      </svg>
     </div>
+
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">FROM BACKYARD</span>
+      </div>
+
+      <h1 id="about-hero-title" class="ht-hero-title">ABOUT BACKYARD</h1>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description">
+        From sprouts, a tree. An independent publication family dedicated to rigorous inquiry into the history of physics, cosmology, music, and climate science.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="#manifesto" class="ht-btn-primary">
+          <span>Read Manifesto</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer" class="ht-btn-secondary">
+          <span>Follow on Substack</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Article Layout: Centered 50% width container -->
+  <main id="main-content" class="ht-article-layout">
+    
+    <article id="manifesto" class="ht-single-article">
+      <header class="ht-article-header">
+        <div class="ht-article-eyebrow-row">
+          <span class="ht-article-badge">EDITORIAL STATEMENT</span>
+          <span class="ht-meta-dot" aria-hidden="true">•</span>
+          <span class="ht-article-category">ORIGINS &amp; DIRECTION</span>
+        </div>
+
+        <h2 class="ht-article-headline">FROM SPROUTS, A TREE</h2>
+
+        <div class="ht-article-meta-bar">
+          <div class="ht-article-meta-left">
+            <span>FOUNDED 2026</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>ANTONIO VISCUSI</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>ALL DISPATCHES IN ENGLISH</span>
+          </div>
+          <div class="ht-article-meta-share">
+            <a href="mailto:aviscusi11@gmail.com">Contact Editorial <span aria-hidden="true">✉</span></a>
+          </div>
+        </div>
+      </header>
+
+      <!-- 50% width centered text block with left vertical black line & drop cap -->
+      <div class="ht-article-body">
+        <p class="ht-first-p">
+          <span class="drop-cap">B</span>ackyard is an independent digital magazine and family of specialized publications founded by Antonio Viscusi. Rooted in physics, astronomical research, deep listening, and climate observation, the project is conceived as an intellectual sanctuary: a space where deep-form essays, long-forgotten mathematical anecdotes, and empirical cosmic observations take precedence over hurried digital noise.
+        </p>
+
+        <h2 class="chapter-title">The Publication Family</h2>
+        <p>
+          Rather than compressing disparate subjects into a monolithic feed, Backyard is structured around distinct publishing channels, each possessing its own rhythm and investigative lens:
+        </p>
+
+        <p>
+          <strong>Heralding Time:</strong> Longform essays on the history and philosophy of science, physical laws, time measurement, and critical epistemology. From the cycloid's impact on British navigation to the astronomical foundations of ancient calendars.
+        </p>
+
+        <p>
+          <strong>Last Scattering Surface:</strong> A dedicated journal exploring the physics of the cosmos, stellar nucleosynthesis, cosmological expansion, and the background radiation that marks the visible boundary of the observable universe.
+        </p>
+
+        <p>
+          <strong>Space of Sound:</strong> Bi-weekly sound orbits, album explorations, acoustic analyses, and deep listening guides designed for curious ears.
+        </p>
+
+        <p>
+          <strong>Observe the Fire:</strong> Rigorous empirical records, zonal temperature anomalies, and environmental heatmaps tracing our planet's climate crisis from 1880 to the present.
+        </p>
+
+        <p>
+          <strong>The Blog &amp; The Magazine:</strong> Occasional field sketches, philosophical poems, and anthological print-rhythm issues curating the strongest voices from across the Backyard family.
+        </p>
+
+        <h2 class="chapter-title">The Editor</h2>
+        <p>
+          Antonio Viscusi holds an MSc in Astrophysics (now at INFN) and a post-graduate master's degree in Space Science. His work bridges theoretical cosmology, astronomical instrumentation, computational modelling, and cultural critique.
+        </p>
+
+        <blockquote>
+          “The cosmos is all that is, or ever was, or ever will be. In the backyard of human knowledge, we cultivate questions rather than certainty.”
+        </blockquote>
+
+        <p>
+          All publications are distributed openly online and through Substack, preserving full independence and reader-supported scholarship.
+        </p>
+      </div>
+    </article>
+
+    <!-- Publication Directory Section -->
+    <section class="ht-related-section" aria-labelledby="pubs-directory-heading">
+      <div class="ht-related-header">
+        <h2 id="pubs-directory-heading" class="ht-related-title">Explore The Publications</h2>
+        <a href="index.html" class="ht-back-btn">Backyard Home <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="ht-articles-grid">
+        <article class="ht-article-card">
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">History of Physics</span>
+            </div>
+            <h3 class="ht-card-title"><a href="ht.html">Heralding Time</a></h3>
+            <p class="ht-card-excerpt">Essays on science, philosophy, time, and intellectual history.</p>
+            <div class="ht-card-footer">
+              <a href="ht.html" class="ht-card-read-link">Explore →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ht-article-card">
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Astrophysics</span>
+            </div>
+            <h3 class="ht-card-title"><a href="lss.html">Last Scattering Surface</a></h3>
+            <p class="ht-card-excerpt">Cosmology, early universe dynamics, and the lifecycle of stars.</p>
+            <div class="ht-card-footer">
+              <a href="lss.html" class="ht-card-read-link">Explore →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ht-article-card">
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Music Chronicles</span>
+            </div>
+            <h3 class="ht-card-title"><a href="sp.html">Space of Sound</a></h3>
+            <p class="ht-card-excerpt">Sound orbits, acoustic discoveries, and curated deep listening.</p>
+            <div class="ht-card-footer">
+              <a href="sp.html" class="ht-card-read-link">Explore →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter Box -->
+    <section class="ht-newsletter-box" aria-labelledby="about-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Join Our Readership</p>
+        <h3 id="about-nl-heading" class="ht-nl-title">Subscribe to Backyard</h3>
+        <p class="ht-nl-desc">Receive free dispatches spanning cosmology, physics history, musical discoveries, and empirical climate records directly in your inbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
   <script src="layout.js"></script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

@@ -1,35 +1,44 @@
-<a href="#main-content" class="skip-link">Skip to content</a>
+<a href="#main-content" class="ht-skip-link">Skip to main content</a>
 
-<div class="util-bar" role="banner">
-  <span>Backyard Magazine</span>
-  <div class="util-bar-links">
-    <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer">Substack</a>
-    <span class="util-sep">•</span>
-    <a href="https://github.com/anvi-git" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-  <span>Backyard Magazine</span>
-</div>
+<header class="ht-navbar" role="banner">
+  <div class="ht-nav-container">
+    <div class="ht-nav-brand">
+      <a href="index.html" class="ht-nav-brand-link" aria-label="Backyard Home">
+        <img src="favicon_io/bt_logo.png" alt="Backyard logo" class="ht-nav-logo-icon">
+        <span class="ht-nav-logo-text">BACKYARD</span>
+      </a>
+      <span class="ht-nav-divider" aria-hidden="true">/</span>
+      <span class="ht-nav-tagline">DIGITAL EDITORIAL</span>
+    </div>
 
-<header class="nameplate">
-  <p class="nameplate-eyebrow">Est. 2026</p>
-  <div class="nameplate-title">
-    <img src="images/titles/backyard.png" alt="Backyard">
+    <!-- Desktop Navigation Links -->
+    <nav class="ht-nav-links" id="ht-nav-menu" aria-label="Main Navigation">
+      <a href="index.html" class="ht-nav-link" data-page="index.html">Home</a>
+      
+      <div class="ht-nav-dropdown">
+        <button type="button" class="ht-nav-link ht-nav-dropbtn" aria-haspopup="true" aria-expanded="false">
+          Publications <span class="ht-nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="ht-nav-dropdown-menu" role="menu">
+          <a href="ht.html" class="ht-dropdown-item" data-page="ht.html">Heralding Time</a>
+          <a href="lss.html" class="ht-dropdown-item" data-page="lss.html">Last Scattering Surface</a>
+          <a href="sp.html" class="ht-dropdown-item" data-page="sp.html">Space of Sound</a>
+          <a href="observe-fire.html" class="ht-dropdown-item" data-page="observe-fire.html">Observe the Fire</a>
+        </div>
+      </div>
+
+      <a href="blog.html" class="ht-nav-link" data-page="blog.html">The Blog</a>
+      <a href="magazine.html" class="ht-nav-link" data-page="magazine.html">The Magazine</a>
+      <a href="about.html" class="ht-nav-link" data-page="about.html">About</a>
+      <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer" class="ht-nav-link ht-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="ht-hamburger" id="ht-hamburger-btn" type="button" aria-expanded="false" aria-controls="ht-nav-menu" aria-label="Open navigation menu">
+      <span class="ht-hamburger-line" aria-hidden="true"></span>
+      <span class="ht-hamburger-line" aria-hidden="true"></span>
+      <span class="ht-hamburger-line" aria-hidden="true"></span>
+    </button>
   </div>
-  <p class="nameplate-tagline">from sprouts, a tree</p>
-  <div class="nameplate-ornament" aria-hidden="true">✦</div>
 </header>
 
-<nav class="section-nav" aria-label="Main navigation">
-  <div class="section-nav-inner">
-    <a href="index.html" class="section-nav-item">Home</a>
-    <a href="ht.html" class="section-nav-item">Heralding Time</a>
-    <a href="lss.html" class="section-nav-item">Last Scattering Surface</a>
-    <a href="sp.html" class="section-nav-item">Space of Sound</a>
-    <a href="blog.html" class="section-nav-item">The Blog</a>
-    <a href="observe-fire.html" class="section-nav-item">Observe the Fire</a>
-    <a href="magazine.html" class="section-nav-item">The Magazine</a>
-    <a href="about.html" class="section-nav-item">About</a>
-  </div>
-</nav>
-
-<div class="edition-bar" id="edition-date" aria-live="polite"></div>

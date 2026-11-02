@@ -3,128 +3,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OBSERVE THE FIRE</title>
-  <link rel="stylesheet" href="style.css">
+  <title>OBSERVE THE FIRE — From Backyard</title>
+  <meta name="description" content="Observe the Fire: notes from a changing world. Climate records, temperature anomaly plots, and empirical environmental observations.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="observe_fire_data.js"></script>
-  <script src="backend/post_content_data.js"></script>
-  <style>
-    .observe-fire-page { max-width: 1360px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 3rem) 6rem; font-family: "Work Sans", sans-serif; }
-    .observe-fire-masthead { padding-top: clamp(2.5rem, 5vw, 5rem); border-bottom: 3px solid var(--ink); }
-    .observe-fire-topline, .observe-fire-nameplate { display: flex; align-items: end; gap: 1.5rem; }
-    .observe-fire-topline { align-items: center; padding-bottom: 0.7rem; border-bottom: 1px solid var(--ink); }
-    .observe-fire-topline p, .observe-fire-nameplate p { margin: 0; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
-    .observe-fire-topline p:last-child, .observe-fire-nameplate p:last-child { text-align: right; }
-    .observe-fire-nameplate { padding: clamp(1.5rem, 4vw, 3.75rem) 0 1.2rem; }
-    .observe-fire-title { flex: 1 1 auto; min-width: 0; margin: 0; font-size: clamp(1.8rem, 6vw, 6rem); font-weight: 800; letter-spacing: -0.085em; line-height: 0.76; text-align: center; text-transform: uppercase; white-space: nowrap; }
-    .observe-fire-deck { max-width: 58rem; margin: 1.4rem auto 0; padding-bottom: 1.35rem; font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.45; text-align: center; }
-    .observe-fire-section-heading { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 0; }
-    .observe-fire-section-heading h2 { flex: 0 0 auto; margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; }
-    .observe-fire-section-heading::after { width: 100%; height: 1px; content: ""; background: var(--ink); }
-    .observe-fire-intro { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.1rem; line-height: 1.55; }
-    .observe-fire-posts { display: grid; gap: 1rem; margin-top: 1.5rem; }
-    .observe-fire-empty { margin: 1.5rem 0 0; }
-    .climate-plot-frame { max-width: 72rem; margin: 2.5rem auto 0; }
-    .climate-plot-image-frame { display: grid; min-height: 24rem; place-items: center; overflow: hidden; border: 1px solid var(--ink); background: var(--paper); }
-    .climate-plot-image { display: block; width: 100%; max-height: 42rem; object-fit: contain; }
-    .climate-plot-caption { margin-top: 0.75rem; font-size: 0.78rem; line-height: 1.4; }
-    @media (max-width: 760px) {
-      .observe-fire-topline, .observe-fire-nameplate { gap: 0.55rem; }
-      .observe-fire-topline p, .observe-fire-nameplate p, .observe-fire-topline p:last-child, .observe-fire-nameplate p:last-child { flex: 0 1 20%; text-align: center; }
-      .climate-plot-image-frame { min-height: 15rem; }
-    }
-  </style>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="main-content" class="observe-fire-page">
-    <header class="observe-fire-masthead">
-      <div class="observe-fire-topline" aria-label="Section details">
-        <p>Backyard Magazine</p>
-        <p>Climate Desk</p>
-        <p>Est. 2023</p>
+  <!-- Hero with Dot Pattern -->
+  <section class="ht-hero" aria-labelledby="of-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="of-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="of-dot-fade">
+            <radialGradient id="of-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#of-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#of-dot-grid)" mask="url(#of-dot-fade)" />
+      </svg>
+    </div>
+
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">FROM BACKYARD · CLIMATE DESK</span>
       </div>
 
-      <div class="observe-fire-nameplate">
-        <p>Notes from a changing world</p>
-        <h1 class="observe-fire-title">OBSERVE THE FIRE</h1>
-        <p>Climate change</p>
+      <h1 id="of-hero-title" class="ht-hero-title">OBSERVE THE FIRE</h1>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description">
+        Notes from a changing world. Empirical climate records, heatmaps, and global temperature anomaly charts from 1880 to the present day.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="#climate-records" class="ht-btn-primary">
+          <span>View Climate Records</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer" class="ht-btn-secondary">
+          <span>Subscribe to Dispatches</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Archive Header -->
+  <div class="ht-archive-header-wrap" id="climate-records">
+    <div class="ht-archive-header">
+      <div class="ht-archive-title-group">
+        <h2 class="ht-archive-title">Empirical Data &amp; Observations</h2>
+        <span class="ht-archive-count">3 CLIMATE RECORDS</span>
       </div>
 
-      <p class="observe-fire-deck">Reports on the climate crisis.</p>
-    </header>
-
-    <section aria-labelledby="observe-fire-articles">
-      <div id="observe-fire-posts" class="observe-fire-posts"></div>
-      <div class="observe-fire-section-heading">
-        <h2 id="observe-fire-plots">Climate records</h2>
+      <div class="ht-filter-tags" role="toolbar" aria-label="Filter records">
+        <button type="button" class="ht-filter-tag active">All Records</button>
+        <button type="button" class="ht-filter-tag">1880–2026 Anomalies</button>
       </div>
+    </div>
+  </div>
 
-      <!-- PLOT #1 -->
-      <figure class="climate-plot-frame">
-        <div class="climate-plot-image-frame">
-          <img class="climate-plot-image" src="assets/climate_section/heatmaps/Monthly_Global_Northern_Southern_Temperature_Anomalies.png" alt="Annual Global Temperature Anomalies from 1880 to 2026, with respect to the period 1951-1980.">
+  <!-- Main Content Grid -->
+  <main id="main-content" class="ht-main-content">
+    
+    <div class="ht-articles-grid">
+
+      <!-- Plot 1 -->
+      <article class="ht-article-card">
+        <div class="ht-card-media-wrap" style="aspect-ratio: 16/11; background: #fff;">
+          <img 
+            src="assets/climate_section/heatmaps/Monthly_Global_Northern_Southern_Temperature_Anomalies.png" 
+            alt="Global, Northern, and Southern temperature anomalies from 1880 to 2026" 
+            class="ht-card-image"
+            style="object-fit: contain; padding: 6px;"
+            loading="lazy"
+          >
         </div>
-        <figcaption class="climate-plot-caption">Global, Northern, and Southern temperature anomaly, 1880-2026. </figcaption>
-      </figure>
-
-      <!-- PLOT #2 -->
-      <figure class="climate-plot-frame">
-        <div class="climate-plot-image-frame">
-          <img class="climate-plot-image" src="assets/climate_section/plots/Annual_Mean_Temperature_Anomaly_1880-2026.png" alt="Annual Global Temperature Anomalies from 1880 to 2026, with respect to the period 1951-1980.">
+        <div class="ht-card-content">
+          <div class="ht-card-meta">
+            <span class="ht-card-category">Heatmap</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span class="ht-card-date">1880–2026</span>
+          </div>
+          <h3 class="ht-card-title">Hemispheric Anomaly Heatmap</h3>
+          <p class="ht-card-excerpt">
+            Annual and monthly global, Northern, and Southern hemisphere temperature anomalies relative to the 1951–1980 base period.
+          </p>
+          <div class="ht-card-footer">
+            <a href="assets/climate_section/heatmaps/Monthly_Global_Northern_Southern_Temperature_Anomalies.png" target="_blank" class="ht-card-read-link">
+              <span>Inspect Full Plot</span>
+              <span class="ht-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
-        <figcaption class="climate-plot-caption">Global temperature anomaly, 1880-2026. In the plot, there are three data points, each representing the average temperature anomaly for a given zone. </figcaption>
-      </figure>
+      </article>
 
-      <!-- PLOT #3 -->
-      <figure class="climate-plot-frame">
-        <div class="climate-plot-image-frame">
-          <img class="climate-plot-image" src="assets/climate_section/plots/Global_Temperature_Anomaly_1880-2026.png" alt="Monthly Global Temperature Anomalies from 1880 to 2026, with respect to the period 1951-1980.">
+      <!-- Plot 2 -->
+      <article class="ht-article-card">
+        <div class="ht-card-media-wrap" style="aspect-ratio: 16/11; background: #fff;">
+          <img 
+            src="assets/climate_section/plots/Annual_Mean_Temperature_Anomaly_1880-2026.png" 
+            alt="Annual Mean Temperature Anomaly 1880 to 2026" 
+            class="ht-card-image"
+            style="object-fit: contain; padding: 6px;"
+            loading="lazy"
+          >
         </div>
-        <figcaption class="climate-plot-caption">Global temperature anomaly, 1880-2026. The plot shows a clear upward trend in global temperatures, indicating significant warming over the past century. Yikes.</figcaption>
-      </figure>
+        <div class="ht-card-content">
+          <div class="ht-card-meta">
+            <span class="ht-card-category">Time Series</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span class="ht-card-date">1880–2026</span>
+          </div>
+          <h3 class="ht-card-title">Annual Mean Temperature Anomaly</h3>
+          <p class="ht-card-excerpt">
+            Zonal average temperature anomalies highlighting the distinct divergence and rapid acceleration across polar and temperate latitudes.
+          </p>
+          <div class="ht-card-footer">
+            <a href="assets/climate_section/plots/Annual_Mean_Temperature_Anomaly_1880-2026.png" target="_blank" class="ht-card-read-link">
+              <span>Inspect Full Plot</span>
+              <span class="ht-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
+      <!-- Plot 3 -->
+      <article class="ht-article-card">
+        <div class="ht-card-media-wrap" style="aspect-ratio: 16/11; background: #fff;">
+          <img 
+            src="assets/climate_section/plots/Global_Temperature_Anomaly_1880-2026.png" 
+            alt="Global Temperature Anomaly 1880 to 2026" 
+            class="ht-card-image"
+            style="object-fit: contain; padding: 6px;"
+            loading="lazy"
+          >
+        </div>
+        <div class="ht-card-content">
+          <div class="ht-card-meta">
+            <span class="ht-card-category">Global Record</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span class="ht-card-date">1880–2026</span>
+          </div>
+          <h3 class="ht-card-title">Global Temperature Trend</h3>
+          <p class="ht-card-excerpt">
+            Clear upward trajectory illustrating the unprecedented steepness of surface warming over the last four decades.
+          </p>
+          <div class="ht-card-footer">
+            <a href="assets/climate_section/plots/Global_Temperature_Anomaly_1880-2026.png" target="_blank" class="ht-card-read-link">
+              <span>Inspect Full Plot</span>
+              <span class="ht-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Newsletter Box -->
+    <section class="ht-newsletter-box" aria-labelledby="of-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Observe the Fire · Climate Desk</p>
+        <h3 id="of-nl-heading" class="ht-nl-title">Stay Informed on Climate Data</h3>
+        <p class="ht-nl-desc">Subscribe to receive future climate updates, anomaly charts, and empirical scientific summaries directly in your mailbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
     </section>
+
   </main>
 
   <div id="site-footer"></div>
 
   <script src="layout.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const postsContainer = document.getElementById('observe-fire-posts');
-      const articles = window.OBSERVE_FIRE_ARTICLES || {};
-      const ids = Object.keys(articles).sort((a, b) => {
-        const dateDifference = new Date(articles[b].date || 0) - new Date(articles[a].date || 0);
-        return dateDifference || String(a).localeCompare(String(b));
-      });
-
-      if (!ids.length) {
-        postsContainer.innerHTML = '<p class="observe-fire-empty"></p>';
-        return;
-      }
-
-      ids.forEach(id => {
-        const article = articles[id] || {};
-        const card = document.createElement('article');
-        card.className = 'publication-small-card';
-        card.innerHTML = `
-          <div class="publication-small-content">
-            <p class="publication-small-date">${article.date || ''}</p>
-            <h3 class="publication-small-title">
-              <a href="observe_fire_article.html?article=${encodeURIComponent(id)}">${article.title || 'Untitled observation'}</a>
-            </h3>
-            <p class="publication-small-excerpt">${article.excerpt || ''}</p>
-          </div>
-        `;
-        postsContainer.appendChild(card);
-      });
-    });
-  </script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
   const STORAGE_KEY = 'backyard-thoughts-language';
   const THEME_STORAGE_KEY = 'backyard-thoughts-theme';
   const LANG_PARAM = 'lang';
-  const SUPPORTED_LANGS = new Set(['en', 'it']);
+  const SUPPORTED_LANGS = new Set(['en']);
   const SUPPORTED_THEMES = new Set(['light', 'dark']);
   const SCROLLED_THRESHOLD = 18;
 

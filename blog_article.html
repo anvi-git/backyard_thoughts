@@ -1,200 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Article</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Blog — Article</title>
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="blog_data.js"></script>
-  <script src="post_content_data.js"></script>
-
-    <script>
-      async function getArticleBody(markdownFile) {
-        if (
-          window.POST_CONTENTS &&
-          Object.prototype.hasOwnProperty.call(window.POST_CONTENTS, markdownFile)
-        ) {
-          return window.POST_CONTENTS[markdownFile];
-        }
-
-        const response = await fetch(markdownFile);
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        return response.text();
-      }
-
-      function showArticleError(containerId, message) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = `<p>Unable to load post content. ${message}</p>`;
-      }
-
-      function plainTextLength(input) {
-        return (input || '')
-          .replace(/<[^>]*>/g, ' ')
-          .replace(/\s+/g, ' ')
-          .trim()
-          .length;
-      }
-
-      function escapeHtml(input) {
-        return (input || '')
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      function buildShortContentNote(article) {
-        const excerpt = (article && article.excerpt) || '';
-        const markdownFile = (article && article.markdownFile) || 'inline content';
-        const excerptHtml = excerpt ? `<p>${escapeHtml(excerpt)}</p>` : '';
-        return `
-          <div class="archive-short-content-note">
-            ${excerptHtml}
-            <p><em>Archive note: this local file currently contains only a short preview. Source file: ${escapeHtml(markdownFile)}.</em></p>
-          </div>
-        `;
-      }
-
-      function renderArticleBody(containerId, bodyText, article) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const trimmed = (bodyText || '').trim();
-        if (!trimmed) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
-
-        const plainLen = plainTextLength(trimmed);
-
-        // Imported posts sometimes already contain HTML.
-        const looksLikeHtml = /<\s*[a-z!][^>]*>/i.test(trimmed);
-        const shortNote = plainLen < 120 ? buildShortContentNote(article) : '';
-        let renderedHtml = '';
-
-        if (looksLikeHtml) {
-          renderedHtml = trimmed;
-        } else if (window.marked && typeof window.marked.parse === 'function') {
-          renderedHtml = window.marked.parse(trimmed);
-        } else {
-          renderedHtml = trimmed
-            .split(/\n{2,}/)
-            .map(block => {
-              const escaped = escapeHtml(block);
-              const withImages = escaped.replace(
-                /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
-                (_m, alt, src, title) => `<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ''} loading="lazy">`
-              );
-              return `<p>${withImages.replace(/\n/g, '<br>')}</p>`;
-            })
-            .join('');
-        }
-
-        if (!plainTextLength(renderedHtml)) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
-
-        container.innerHTML = renderedHtml + shortNote;
-      }
-
-      function applyCoverImageLayout(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const firstMediaBlock = container.querySelector('figure, .captioned-image-container');
-        const firstImage = container.querySelector('img');
-        const coverNode = firstMediaBlock || firstImage;
-        if (!coverNode) return;
-
-        coverNode.classList.add('article-cover-media');
-
-        const imageNode = coverNode.tagName === 'IMG'
-          ? coverNode
-          : coverNode.querySelector('img');
-        if (imageNode) imageNode.classList.add('article-cover-media-image');
-      }
-
-      document.addEventListener('DOMContentLoaded', async () => {
-        const bodyContainerId = 'blog-article-body';
-        try {
-          const params = new URLSearchParams(window.location.search);
-          const id = params.get('id') || '1';
-          const articles = window.BLOG_ARTICLES || {};
-          const fallbackId = Object.keys(articles)[0];
-          const article = articles[id] || articles[fallbackId];
-
-          if (!article) {
-            showArticleError(bodyContainerId, 'No post metadata found.');
-            return;
-          }
-
-          const titleEl = document.getElementById('blog-article-title');
-          if (titleEl) titleEl.textContent = article.title || '';
-
-          if (article.markdownFile) {
-            try {
-              const mdText = await getArticleBody(article.markdownFile);
-              renderArticleBody(bodyContainerId, mdText, article);
-              applyCoverImageLayout(bodyContainerId);
-            } catch (error) {
-              showArticleError(bodyContainerId, `File: ${article.markdownFile}.`);
-            }
-          } else {
-            renderArticleBody(bodyContainerId, article.content || '', article);
-            applyCoverImageLayout(bodyContainerId);
-          }
-
-        // Populate Suggestions with three random posts (excluding current)
-          const suggestionsUl = document.getElementById('suggestions-list');
-          if (suggestionsUl) {
-            const allIds = Object.keys(articles).filter(k => k !== id);
-            for (let i = allIds.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [allIds[i], allIds[j]] = [allIds[j], allIds[i]];
-            }
-            allIds.slice(0, 3).forEach(randId => {
-              const li = document.createElement('li');
-              const a = document.createElement('a');
-              a.href = `blog_article.html?id=${randId}`;
-              a.textContent = articles[randId].title;
-              li.appendChild(a);
-              suggestionsUl.appendChild(li);
-            });
-          }
-        } catch (error) {
-          showArticleError(bodyContainerId, `Runtime error: ${error.message}`);
-        }
-      });
-    </script>
+  <script src="archive-engine.js"></script>
+  <script src="media-embeds.js"></script>
+  <script src="article-engine.js"></script>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="blog-article" class="page-wrapper">
-    <div id="blog-layout" class="publication-layout">
-      <aside id="blog-sidebar" class="blog-sidebar"></aside>
+  <!-- Main Article Layout: Centered 50% width container -->
+  <main id="main-content" class="ht-article-layout">
+    
+    <nav class="ht-article-back-nav" aria-label="Return navigation">
+      <a href="blog.html" class="ht-back-btn">
+        <span aria-hidden="true">←</span>
+        <span>Back to The Blog</span>
+      </a>
+    </nav>
 
-      <article class="blog-article-container">
-        <h1 id="blog-article-title"></h1>
-        <section id="blog-article-body" class="blog-article-content"></section>
-      </article>
-    </div>
+    <article class="ht-single-article">
+      <!-- Article Header -->
+      <header class="ht-article-header">
+        <div class="ht-article-eyebrow-row">
+          <span class="ht-article-badge">FROM BACKYARD</span>
+          <span class="ht-meta-dot" aria-hidden="true">•</span>
+          <span class="ht-article-category">THE BLOG</span>
+        </div>
+
+        <h1 class="ht-article-headline" id="blog-article-title">Loading note...</h1>
+
+        <div class="ht-article-meta-bar">
+          <div class="ht-article-meta-left">
+            <time id="blog-article-date" datetime=""></time>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>FIELD NOTES</span>
+          </div>
+          <div class="ht-article-meta-share">
+            <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer">
+              Original on Substack <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Essay body text: 50% width centered, vertical left line, drop cap on first letter -->
+      <div id="blog-article-body" class="ht-article-body"></div>
+    </article>
+
+    <!-- "Read also..." Section -->
+    <section class="ht-related-section" aria-labelledby="blog-related-heading">
+      <div class="ht-related-header">
+        <h2 id="blog-related-heading" class="ht-related-title">Read also...</h2>
+        <a href="blog.html" class="ht-back-btn">View all notes <span aria-hidden="true">→</span></a>
+      </div>
+      <div id="blog-read-also-grid" class="ht-related-grid"></div>
+    </section>
+
+    <!-- Newsletter Callout Box -->
+    <section class="ht-newsletter-box" aria-labelledby="blog-article-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">The Blog · Backyard</p>
+        <h3 id="blog-article-nl-heading" class="ht-nl-title">Enjoyed this note?</h3>
+        <p class="ht-nl-desc">Subscribe to receive future essays, poetry, and intellectual sketches delivered straight to your inbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
   <script src="layout.js"></script>
-  <script src="headerScrollState.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      BackyardArticle.initArticle({
+        sourceData: window.BLOG_ARTICLES,
+        publicationName: 'THE BLOG',
+        viewerUrl: 'blog_article.html',
+        bodyContainerId: 'blog-article-body',
+        titleElementId: 'blog-article-title',
+        dateElementId: 'blog-article-date',
+        relatedGridId: 'blog-read-also-grid'
+      });
+    });
+  </script>
 </body>
 </html>
-
-

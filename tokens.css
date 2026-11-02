@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────────────────────────
+   BACKYARD DESIGN SYSTEM — Central Design Tokens
+   Preserves the editorial palette, Bebas Neue & JetBrains Mono typography,
+   spacing scales, container boundaries, and transitions.
+───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Color Palette */
+  --ht-black: #0d0d0d;
+  --ht-white: #ffffff;
+  --ht-gray-warm: #6b6b6b;
+  --ht-gray-light: #faf9f6;
+  --ht-gray-border: #e4e1db;
+  --ht-gray-border-subtle: rgba(13, 13, 13, 0.08);
+  --ht-accent: #d98f55;
+  --ht-accent-hover: #b86b32;
+  --ht-accent-accessible: #9e4f16;
+
+  /* Legacy variable mappings for backward compatibility */
+  --ink: var(--ht-black);
+  --ink-muted: var(--ht-gray-warm);
+  --paper: var(--ht-white);
+  --paper-tint: var(--ht-gray-light);
+  --rule: var(--ht-gray-border);
+  --rule-light: #f0ede6;
+  --rule-heavy: var(--ht-black);
+  --accent: var(--ht-accent);
+  --content-max: 1200px;
+
+  /* Typography */
+  --ht-font-title: 'Bebas Neue', sans-serif;
+  --ht-font-serif-display: 'Bebas Neue', 'Playfair Display', Georgia, sans-serif;
+  --ht-font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --ht-font-body: var(--ht-font-mono);
+  --ht-font-serif-body: var(--ht-font-mono);
+
+  /* Typography Scales */
+  --ht-font-size-xs: 11px;
+  --ht-font-size-sm: 12px;
+  --ht-font-size-base: 15px;
+  --ht-font-size-md: 16px;
+  --ht-font-size-lg: 1.15rem;
+  --ht-font-size-xl: 1.7rem;
+  --ht-font-size-2xl: 2.2rem;
+  --ht-font-size-3xl: clamp(2.8rem, 6vw, 4.5rem);
+
+  /* Spacing Scale */
+  --ht-space-1: 0.25rem;
+  --ht-space-2: 0.5rem;
+  --ht-space-3: 0.75rem;
+  --ht-space-4: 1rem;
+  --ht-space-5: 1.25rem;
+  --ht-space-6: 1.5rem;
+  --ht-space-8: 2rem;
+  --ht-space-10: 2.5rem;
+  --ht-space-12: 3rem;
+  --ht-space-16: 4rem;
+  --ht-space-20: 5rem;
+
+  /* Layout Widths */
+  --ht-max-width: 1200px;
+  --ht-article-width: 50%;
+  --ht-article-min-width: 320px;
+  --ht-article-max-width: 740px;
+
+  /* Borders & Radii */
+  --ht-border-width: 1px;
+  --ht-radius-sm: 2px;
+  --ht-radius-md: 4px;
+
+  /* Transitions */
+  --ht-transition-fast: 0.18s ease;
+  --ht-transition-normal: 0.25s ease;
+  --ht-transition-slow: 0.35s ease;
+
+  /* Shadows */
+  --ht-shadow-sm: 0 2px 6px rgba(13, 13, 13, 0.04);
+  --ht-shadow-md: 0 8px 24px rgba(13, 13, 13, 0.06);
+  --ht-shadow-dropdown: 0 10px 25px rgba(0, 0, 0, 0.08);
+}

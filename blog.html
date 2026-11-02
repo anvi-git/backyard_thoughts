@@ -3,76 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>THE BLOG — From Backyard</title>
+  <meta name="description" content="The Blog: short takes, philosophical observations, poems, and field notes from the Backyard editors.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="blog_data.js"></script>
+  <script src="archive-engine.js"></script>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="main-content" class="page-wrapper">
-    <div id="blog-layout">
-      <section id="blog-articles"></section>
+  <!-- Hero with Dot Pattern -->
+  <section class="ht-hero" aria-labelledby="blog-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="blog-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="blog-dot-fade">
+            <radialGradient id="blog-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#blog-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#blog-dot-grid)" mask="url(#blog-dot-fade)" />
+      </svg>
     </div>
+
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">FROM BACKYARD</span>
+      </div>
+
+      <h1 id="blog-hero-title" class="ht-hero-title">THE BLOG</h1>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description">
+        Short takes, poems, philosophical observations, and field notes from the Backyard family.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="#archivio" class="ht-btn-primary">
+          <span>Browse Notes</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer" class="ht-btn-secondary">
+          <span>Subscribe on Substack</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Archive Header -->
+  <div class="ht-archive-header-wrap" id="archivio">
+    <div class="ht-archive-header">
+      <div class="ht-archive-title-group">
+        <h2 class="ht-archive-title" id="blog-archive-heading">Notes &amp; Observations</h2>
+        <span class="ht-archive-count" id="blog-articles-count">ALL POSTS</span>
+      </div>
+
+      <div class="ht-filter-tags" role="toolbar" aria-label="Filter blog posts">
+        <button type="button" class="ht-filter-tag active">All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <main id="main-content" class="ht-main-content">
+    
+    <!-- Articles Grid -->
+    <section aria-labelledby="blog-archive-heading">
+      <div class="ht-articles-grid" id="blog-articles-grid"></div>
+    </section>
+
+    <!-- Newsletter Box -->
+    <section class="ht-newsletter-box" aria-labelledby="blog-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">The Blog · Backyard</p>
+        <h3 id="blog-nl-heading" class="ht-nl-title">Read With Us</h3>
+        <p class="ht-nl-desc">Subscribe to receive future essays, poems, and field observations directly in your inbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
+  <script src="layout.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const articlesContainer = document.getElementById('blog-articles');
-      const suggestions = document.getElementById('suggestions-list');
-      const articles = window.BLOG_ARTICLES || {};
-
-      const ids = Object.keys(articles).sort((a, b) => {
-        const da = new Date(articles[a].date || 0);
-        const db = new Date(articles[b].date || 0);
-        return db - da;
+      BackyardArchive.initArchive({
+        sourceData: window.BLOG_ARTICLES,
+        viewerUrl: 'blog_article.html',
+        gridContainerId: 'blog-articles-grid',
+        countElementId: 'blog-articles-count'
       });
-
-      if (!ids.length) {
-        if (articlesContainer) {
-          articlesContainer.innerHTML = '<p>No posts yet.</p>';
-        }
-        return;
-      }
-
-      if (articlesContainer) {
-        ids.forEach(id => {
-          const article = articles[id] || {};
-          const card = document.createElement('article');
-          card.className = 'publication-small-card';
-          card.innerHTML = `
-            <div class="publication-small-content">
-              <h3 class="publication-small-title">
-                <a href="blog_article.html?id=${id}">${article.title || ''}</a>
-              </h3>
-              <p class="publication-small-excerpt">${article.excerpt || ''}</p>
-            </div>
-          `;
-          articlesContainer.appendChild(card);
-        });
-      }
-
-      if (suggestions) {
-        ids.slice(1, 4).forEach(id => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `blog_article.html?id=${id}`;
-          a.textContent = articles[id].title || 'Untitled';
-          li.appendChild(a);
-          suggestions.appendChild(li);
-        });
-      }
     });
   </script>
-
-  <script src="layout.js"></script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

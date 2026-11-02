@@ -1,326 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last Scattering Surface Article</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Last Scattering Surface — Essay</title>
+  <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="lss_data.js"></script>
-  <script src="post_content_data.js"></script>
-    <script>
-      async function getArticleBody(markdownFile) {
-        if (
-          window.POST_CONTENTS &&
-          Object.prototype.hasOwnProperty.call(window.POST_CONTENTS, markdownFile)
-        ) {
-          return window.POST_CONTENTS[markdownFile];
-        }
-
-        const response = await fetch(markdownFile);
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        return response.text();
-      }
-
-      function showArticleError(containerId, message) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = `<p>Unable to load post content. ${message}</p>`;
-      }
-
-      function plainTextLength(input) {
-        return (input || '')
-          .replace(/<[^>]*>/g, ' ')
-          .replace(/\s+/g, ' ')
-          .trim()
-          .length;
-      }
-
-      function escapeHtml(input) {
-        return (input || '')
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      function buildShortContentNote(article) {
-        const excerpt = (article && article.excerpt) || '';
-        const markdownFile = (article && article.markdownFile) || 'unknown file';
-        const excerptHtml = excerpt ? `<p>${escapeHtml(excerpt)}</p>` : '';
-        return `
-          <div class="archive-short-content-note">
-            ${excerptHtml}
-            <p><em>Archive note: this local file currently contains only a short preview. Source file: ${escapeHtml(markdownFile)}.</em></p>
-          </div>
-        `;
-      }
-
-      function renderArticleBody(containerId, bodyText, article) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const trimmed = (bodyText || '').trim();
-        if (!trimmed) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
-
-        const plainLen = plainTextLength(trimmed);
-
-        // Imported posts sometimes already contain HTML.
-        const looksLikeHtml = /<\s*[a-z!][^>]*>/i.test(trimmed);
-        const shortNote = plainLen < 120 ? buildShortContentNote(article) : '';
-        let renderedHtml = '';
-
-        if (looksLikeHtml) {
-          renderedHtml = trimmed;
-        } else if (window.marked && typeof window.marked.parse === 'function') {
-          renderedHtml = window.marked.parse(trimmed);
-        } else {
-          renderedHtml = trimmed
-            .split(/\n{2,}/)
-            .map(block => {
-              const escaped = escapeHtml(block);
-              const withImages = escaped.replace(
-                /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
-                (_m, alt, src, title) => `<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ''} loading="lazy">`
-              );
-              return `<p>${withImages.replace(/\n/g, '<br>')}</p>`;
-            })
-            .join('');
-        }
-
-        if (!plainTextLength(renderedHtml)) {
-          container.innerHTML = buildShortContentNote(article);
-          return;
-        }
-
-        container.innerHTML = renderedHtml + shortNote;
-      }
-
-      function applyCoverImageLayout(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const firstMediaBlock = container.querySelector('figure, .captioned-image-container');
-        const firstImage = container.querySelector('img');
-        const coverNode = firstMediaBlock || firstImage;
-        if (!coverNode) return;
-
-        coverNode.classList.add('article-cover-media');
-
-        const imageNode = coverNode.tagName === 'IMG'
-          ? coverNode
-          : coverNode.querySelector('img');
-        if (imageNode) imageNode.classList.add('article-cover-media-image');
-      }
-
-      function removeDuplicateTitle(containerId, pageTitle) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const firstHeading = container.querySelector('h1, h2');
-        if (!firstHeading) return;
-
-        const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
-        if (normalize(firstHeading.textContent) === normalize(pageTitle)) {
-          firstHeading.remove();
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', async () => {
-        const bodyContainerId = 'lss-article-body';
-        try {
-        const dedupeArticles = sourceArticles => {
-          const scoreArticle = article => {
-            const file = ((article && article.markdownFile) || '').toLowerCase();
-            if (file.endsWith('.html')) return 2;
-            if (file.endsWith('.md')) return 1;
-            return 0;
-          };
-
-          const normalize = value => (value || '').toString().trim().toLowerCase();
-          const makeKey = article => [
-            normalize(article && article.title),
-            normalize(article && article.date),
-            normalize(article && article.excerpt)
-          ].join('||');
-
-          const bestByKey = new Map();
-          const idAlias = {};
-
-          Object.entries(sourceArticles || {}).forEach(([articleId, article]) => {
-            const candidate = { id: articleId, article, score: scoreArticle(article) };
-            const key = makeKey(article);
-            const existing = bestByKey.get(key);
-
-            if (!existing) {
-              bestByKey.set(key, candidate);
-              return;
-            }
-
-            if (candidate.score > existing.score) {
-              idAlias[existing.id] = candidate.id;
-              bestByKey.set(key, candidate);
-            } else {
-              idAlias[candidate.id] = existing.id;
-            }
-          });
-
-          const articles = {};
-          bestByKey.forEach(entry => {
-            articles[entry.id] = entry.article;
-          });
-
-          return { articles, idAlias };
-        };
-
-        const getArticleSlug = article => {
-          const markdownFile = ((article && article.markdownFile) || '').toString();
-          const filename = markdownFile.split('/').pop() || '';
-          return filename.replace(/\.(md|html)$/i, '');
-        };
-
-        const buildArticleHref = article => {
-          const slug = getArticleSlug(article);
-          return slug ? `lss_article.html?article=${encodeURIComponent(slug)}` : 'lss_article.html';
-        };
-
-        const params = new URLSearchParams(window.location.search);
-        const requestedArticleSlug = params.get('article');
-        const requestedId = params.get('id') || '1';
-        const deduped = dedupeArticles(window.LSS_ARTICLES || {});
-        const articles = deduped.articles;
-        const idBySlug = {};
-        Object.keys(articles).forEach(articleId => {
-          const slug = getArticleSlug(articles[articleId]);
-          if (slug) idBySlug[slug] = articleId;
-        });
-
-        const idFromSlug = requestedArticleSlug ? idBySlug[requestedArticleSlug] : null;
-        const id = idFromSlug || deduped.idAlias[requestedId] || requestedId;
-        const fallbackId = Object.keys(articles)[0];
-        const article = articles[id] || articles[fallbackId];
-
-        if (!article) {
-          showArticleError(bodyContainerId, 'Post not found.');
-          return;
-        }
-
-        document.getElementById('lss-article-title').textContent = article.title;
-
-        try {
-          const mdText = await getArticleBody(article.markdownFile);
-          renderArticleBody(bodyContainerId, mdText, article);
-          removeDuplicateTitle(bodyContainerId, article.title);
-          applyCoverImageLayout(bodyContainerId);
-        } catch (error) {
-          showArticleError(bodyContainerId, `File: ${article.markdownFile}.`);
-        }
-
-        const suggestionsUl = document.getElementById('lss-suggestions-list');
-        const suggestionsGrid = document.getElementById('lss-read-also-grid');
-        if (suggestionsUl || suggestionsGrid) {
-          const allIds = Object.keys(articles).sort((a, b) => {
-            const da = new Date(articles[a].date || 0);
-            const db = new Date(articles[b].date || 0);
-            return db - da;
-          });
-
-          allIds
-            .filter(randId => randId !== id)
-            .slice(0, 12)
-            .forEach(randId => {
-              const relatedArticle = articles[randId] || {};
-
-              if (suggestionsUl) {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = buildArticleHref(relatedArticle);
-                a.textContent = relatedArticle.title;
-                li.appendChild(a);
-                suggestionsUl.appendChild(li);
-              }
-
-              if (suggestionsGrid) {
-                const card = document.createElement('a');
-                card.className = 'article-mini-card';
-                card.href = buildArticleHref(relatedArticle);
-
-                if (relatedArticle.image) {
-                  const thumb = document.createElement('img');
-                  thumb.className = 'article-mini-card-image';
-                  thumb.src = relatedArticle.image;
-                  thumb.alt = relatedArticle.title || 'Related article image';
-                  thumb.loading = 'lazy';
-                  card.appendChild(thumb);
-                } else {
-                  const thumbPlaceholder = document.createElement('div');
-                  thumbPlaceholder.className = 'article-mini-card-image article-mini-card-image-empty';
-                  card.appendChild(thumbPlaceholder);
-                }
-
-                const body = document.createElement('div');
-                body.className = 'article-mini-card-body';
-
-                const title = document.createElement('h3');
-                title.className = 'article-mini-card-title';
-                title.textContent = relatedArticle.title || 'Untitled article';
-
-                body.appendChild(title);
-                card.appendChild(body);
-                suggestionsGrid.appendChild(card);
-              }
-            });
-
-          if (suggestionsGrid && !suggestionsGrid.children.length) {
-            const p = document.createElement('p');
-            p.className = 'article-read-also-empty';
-            p.textContent = 'No related posts yet.';
-            suggestionsGrid.appendChild(p);
-          }
-        }
-        } catch (error) {
-          showArticleError(bodyContainerId, `Runtime error: ${error.message}`);
-        }
-      });
-    </script>
+  <script src="archive-engine.js"></script>
+  <script src="media-embeds.js"></script>
+  <script src="article-engine.js"></script>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="blog-article" class="page-wrapper lss-page">
-    <div id="blog-layout" class="publication-layout">
-      <aside id="blog-sidebar">
-        <section>
-          <h2>read also...</h2>
-          <ul class="blog-sidebar-list" id="lss-suggestions-list"></ul>
-        </section>
-      </aside>
+  <!-- Main Article Layout: Centered 50% width container -->
+  <main id="main-content" class="ht-article-layout">
+    
+    <nav class="ht-article-back-nav" aria-label="Return navigation">
+      <a href="lss.html" class="ht-back-btn">
+        <span aria-hidden="true">←</span>
+        <span>Back to Last Scattering Surface</span>
+      </a>
+    </nav>
 
-      <article class="blog-article-container">
-        <h1 id="lss-article-title"></h1>
-        <section id="lss-article-body" class="blog-article-content"></section>
+    <article class="ht-single-article">
+      <!-- Article Header -->
+      <header class="ht-article-header">
+        <div class="ht-article-eyebrow-row">
+          <span class="ht-article-badge">FROM BACKYARD</span>
+          <span class="ht-meta-dot" aria-hidden="true">•</span>
+          <span class="ht-article-category">LAST SCATTERING SURFACE</span>
+        </div>
 
-        <section class="article-read-also" aria-labelledby="lss-read-also-title">
-          <h2 id="lss-read-also-title">read also...</h2>
-          <div id="lss-read-also-grid" class="article-mini-grid"></div>
-        </section>
-      </article>
-    </div>
+        <h1 class="ht-article-headline" id="lss-article-title">Loading essay...</h1>
+
+        <p class="ht-article-deck" id="lss-article-deck" style="display: none;"></p>
+
+        <div class="ht-article-meta-bar">
+          <div class="ht-article-meta-left">
+            <time id="lss-article-date" datetime=""></time>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span id="lss-article-readtime">7 min read</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>COSMOLOGY</span>
+          </div>
+          <div class="ht-article-meta-share">
+            <a href="https://lastscatteringsurface.substack.com" target="_blank" rel="noopener noreferrer">
+              Original on Substack <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cover Image (if available) -->
+      <div id="lss-cover-wrap" class="ht-article-cover-wrap" style="display: none;">
+        <img id="lss-cover-img" src="" alt="" loading="eager" onerror="this.parentElement.style.display='none'">
+      </div>
+
+      <!-- Essay body text: 50% width centered, vertical left line, drop cap on first letter -->
+      <div id="lss-article-body" class="ht-article-body"></div>
+    </article>
+
+    <!-- "Read also..." Section -->
+    <section class="ht-related-section" aria-labelledby="lss-related-heading">
+      <div class="ht-related-header">
+        <h2 id="lss-related-heading" class="ht-related-title">Read also...</h2>
+        <a href="lss.html" class="ht-back-btn">View all essays <span aria-hidden="true">→</span></a>
+      </div>
+      <div id="lss-read-also-grid" class="ht-related-grid"></div>
+    </section>
+
+    <!-- Newsletter Callout Box -->
+    <section class="ht-newsletter-box" aria-labelledby="lss-article-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Last Scattering Surface Substack</p>
+        <h3 id="lss-article-nl-heading" class="ht-nl-title">Enjoyed this cosmological inquiry?</h3>
+        <p class="ht-nl-desc">Subscribe for free to receive future essays on the physics of the early universe, stars, and cosmological paradoxes delivered straight to your inbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://lastscatteringsurface.substack.com" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
-  <script src="layout.js" defer></script>
-  <script src="headerScrollState.js" defer></script>
+  <script src="layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      BackyardArticle.initArticle({
+        sourceData: window.LSS_ARTICLES,
+        publicationName: 'LAST SCATTERING SURFACE',
+        viewerUrl: 'lss_article.html',
+        bodyContainerId: 'lss-article-body',
+        titleElementId: 'lss-article-title',
+        deckElementId: 'lss-article-deck',
+        dateElementId: 'lss-article-date',
+        readTimeElementId: 'lss-article-readtime',
+        coverWrapId: 'lss-cover-wrap',
+        coverImgId: 'lss-cover-img',
+        relatedGridId: 'lss-read-also-grid'
+      });
+    });
+  </script>
 </body>
-
 </html>

@@ -3,303 +3,472 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backyard</title>
-  <meta name="description" content="Backyard - A digital magazine and collection of publications covering history of physics, cosmology, music, and climate observations.">
-  <meta property="og:title" content="Backyard">
-  <meta property="og:description" content="Backyard - A digital magazine and collection of publications covering history of physics, cosmology, music, and climate observations.">
-  <link rel="stylesheet" href="style.css">
+  <title>BACKYARD — Digital Magazine &amp; Publications</title>
+  <meta name="description" content="Backyard: a digital publication family covering the history and philosophy of science, cosmology, music, and climate observations.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
 </head>
-<body>
+<body class="ht-body">
   <div id="site-header"></div>
 
-  <!-- Main content -->
-  <main id="main-content" class="page-wrapper">
+  <!-- Hero with Dot Grid Pattern -->
+  <section class="ht-hero" aria-labelledby="home-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="home-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="home-dot-fade">
+            <radialGradient id="home-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#home-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#home-dot-grid)" mask="url(#home-dot-fade)" />
+      </svg>
+    </div>
 
-    <!-- ── Feature / Hero story ─────────────────────────── -->
-    <section class="feature-section" aria-label="Featured article">
-      <div class="feature-grid">
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">DIGITAL MAGAZINE &amp; ARCHIVE</span>
+      </div>
 
-        <!-- Main story -->
-        <a href="observe-fire.html" class="feature-main" aria-label="Go to Observe the Fire">
-          <p class="feature-kicker">Latest · Observe the Fire</p>
-          <div class="feature-img-wrap">
-            <img
-              src="assets/climate_section/plots/Global_Temperature_Anomaly_1880-2026.png"
-              alt="Global temperature anomaly from 1880 to 2026"
-              width="800" height="600"
-              loading="eager"
-              onerror="this.style.display='none'"
-            >
-          </div>
-          <h2 class="feature-headline">Global Temperature Anomaly</h2>
-          <p class="feature-deck">
-            A climate record from Observe the Fire, showing global temperature change from 1880 to 2026.
-          </p>
-          <p class="feature-byline">Observe the Fire &nbsp;·&nbsp; Climate records</p>
+      <div class="ht-hero-brand-top">
+        <img src="favicon_io/bt_logo.png" alt="Backyard Logo" class="ht-hero-logo-img">
+        <h1 id="home-hero-title" class="ht-hero-title">BACKYARD</h1>
+      </div>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description">
+        A digital publication family exploring the history and philosophy of science, cosmology, soundscapes, and empirical climate records.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="#publications" class="ht-btn-primary">
+          <span>Explore Publications</span>
+          <span aria-hidden="true">↓</span>
         </a>
-
-        <!-- Sidebar: In Backyard -->
-        <aside class="feature-sidebar" aria-label="In this issue">
-          <p class="sidebar-label">In the Backyard</p>
-          <ul class="toc-list">
-            <li class="toc-item">
-              <a href="observe-fire.html">
-                <p class="toc-pub">Observe the Fire</p>
-                <p class="toc-title">Notes from a changing world</p>
-              </a>
-            </li>
-            <li class="toc-item">
-              <a href="ht.html">
-                <p class="toc-pub">Heralding Time</p>
-                <p class="toc-title">A blog on the history and philosophy of physics.</p>
-              </a>
-            </li>
-            <li class="toc-item">
-              <a href="sp.html">
-                <p class="toc-pub">Space of Sound</p>
-                <p class="toc-title">A blog on music.</p>
-              </a>
-            </li>
-            <li class="toc-item">
-              <a href="lss.html">
-                <p class="toc-pub">Last Scattering Surface</p>
-                <p class="toc-title">A blog on cosmology and astrophysics.</p>
-              </a>
-            </li>
-            <li class="toc-item">
-              <a href="blog.html">
-                <p class="toc-pub">The Blog</p>
-                <p class="toc-title">Notes and short takes</p>
-              </a>
-            </li>
-          </ul>
-        </aside>
-
+        <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer" class="ht-btn-secondary">
+          <span>Subscribe on Substack</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ── Ornamental rule ─────────────────────────────── -->
-    <div class="orn-rule" aria-hidden="true">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <!-- Main Content Wrapper -->
+  <main id="main-content" class="ht-main-content">
 
-    <!-- ── Three-column newsletters ──────────────────── -->
-    <section class="newsletters-section" aria-label="The newsletters">
-      <div class="section-header">
-        <span class="section-header-rule" aria-hidden="true"></span>
-        <span class="section-header-title">The Newsletters</span>
-        <span class="section-header-rule" aria-hidden="true"></span>
-      </div>
-      <div class="newsletter-grid">
-
-        <div class="nl-card">
-          <p class="nl-pub">Heralding Time</p>
-          <div class="nl-img-wrap">
-            <a href="ht_article.html?article=ht_post_046-omoe9" tabindex="-1" aria-hidden="true">
-              <img
-                src="https://substack-post-media.s3.amazonaws.com/public/images/7ff97fcc-6d86-4f4f-9287-d91080e4daed_1572x1048.png"
-                alt="Tune the orchestra"
-                width="600" height="400"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-            </a>
-          </div>
-          <a href="ht_article.html?article=ht_post_046-omoe9">
-            <h3 class="nl-headline">Tune the orchestra</h3>
-          </a>
-          <p class="nl-deck">
-            On the motion of the Earth — chapter IX.
-          </p>
-          <a class="nl-byline" href="ht.html">Explore Heralding Time →</a>
-        </div>
-
-        <div class="nl-card">
-          <p class="nl-pub">Last Scattering Surface</p>
-          <div class="nl-img-wrap">
-            <a href="lss_article.html?article=lss_post_story-of-a-star-part-v" tabindex="-1" aria-hidden="true">
-              <img
-                src="https://substackcdn.com/image/fetch/$s_!dYeF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6643f148-adc0-43a6-b3e7-8621e12ef35e_1572x1048.png"
-                alt="A story of a star - Part V"
-                width="600" height="400"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-            </a>
-          </div>
-          <a href="lss_article.html?article=lss_post_story-of-a-star-part-v">
-            <h3 class="nl-headline">A story of a star — Part V</h3>
-          </a>
-          <p class="nl-deck">
-            Where we talk of burning, aging, and the inevitable consequence of a star's journey.
-          </p>
-          <a class="nl-byline" href="lss.html">Explore Last Scattering Surface →</a>
-        </div>
-
-        <div class="nl-card">
-          <p class="nl-pub">Space of Sound</p>
-          <div class="nl-img-wrap">
-            <a href="spacesound_article.html?article=ss_post_001-sound-orbits-8-this-week-in-music" tabindex="-1" aria-hidden="true">
-              <img
-                src="images/sos/orbits/8.png"
-                alt="Sound Orbits #8: this week in music"
-                width="600" height="400"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-            </a>
-          </div>
-          <a href="spacesound_article.html?article=ss_post_001-sound-orbits-8-this-week-in-music">
-            <h3 class="nl-headline">Sound Orbits #8</h3>
-          </a>
-          <p class="nl-deck">This week in music, from 1 March to 14 March.</p>
-          <a class="nl-byline" href="sp.html">Explore Space of Sound →</a>
-        </div>
-
-      </div>
-
-      <!-- ── Newsletter subscription banner ──────────────── -->
-      <div class="newsletter-subscribe-strip" aria-label="Subscribe to Backyard Newsletter">
-        <div class="newsletter-subscribe-text">
-          <p class="nl-subscribe-kicker">Free on Substack</p>
-          <h3 class="nl-subscribe-title">Subscribe to Backyard Magazine</h3>
-          <p class="nl-subscribe-desc">Get the latest issues, scientific explorations, and sound recommendations delivered to your inbox.</p>
-        </div>
-        <form class="newsletter-subscribe-form" action="https://substack.com/@backyardmagazine" method="get">
-          <div class="newsletter-subscribe-inputs">
-            <input 
-              type="email" 
-              name="email" 
-              class="newsletter-subscribe-input" 
-              placeholder="Enter your email address" 
-              aria-label="Email address" 
-              required
+    <!-- Featured Dispatch -->
+    <section class="ht-featured-wrap" aria-label="Featured dispatch">
+      <div class="ht-featured-grid">
+        <div class="ht-card-media-wrap" style="aspect-ratio: 16/10;">
+          <a href="ht_article.html?article=ht_post_046-omoe9" aria-label="Tune the orchestra">
+            <img 
+              src="https://substack-post-media.s3.amazonaws.com/public/images/7ff97fcc-6d86-4f4f-9287-d91080e4daed_1572x1048.png" 
+              alt="Tune the orchestra" 
+              class="ht-card-image"
+              loading="eager"
             >
-            <button type="submit" class="newsletter-subscribe-btn">Subscribe</button>
+          </a>
+        </div>
+        <div class="ht-featured-content">
+          <span class="ht-featured-badge">Featured Dispatch · Heralding Time</span>
+          <h2 class="ht-featured-title">
+            <a href="ht_article.html?article=ht_post_046-omoe9">Tune the orchestra</a>
+          </h2>
+          <p class="ht-featured-excerpt">
+            On the motion of the Earth — chapter IX. An inquiry into the historical, celestial, and physical mechanics of our planet in motion.
+          </p>
+          <div class="ht-card-meta">
+            <span class="ht-card-date">24 June 2026</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span class="ht-card-readtime">8 min read</span>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span class="ht-card-category">Heralding Time</span>
           </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ── More sections ──────────────────────────────── -->
-    <section class="more-sections-section" aria-label="More from Backyard">
-      <div class="section-header">
-        <span class="section-header-rule" aria-hidden="true"></span>
-        <span class="section-header-title">More from Backyard</span>
-        <span class="section-header-rule" aria-hidden="true"></span>
-      </div>
-      <div class="section-spotlight-grid">
-
-        <article class="section-spotlight">
-          <a href="magazine.html" class="section-spotlight-image-link">
-            <div class="section-spotlight-image-wrap">
-              <img src="images/titles/backyard.png" alt="Backyard Magazine" loading="lazy">
-            </div>
-          </a>
-          <p class="nl-pub">The Magazine</p>
-          <a href="magazine.html">
-            <h3 class="nl-headline">OUT THE NEW ISSUE!!</h3>
-          </a>
-          <p class="nl-deck">Issue No. 01: a selection from the publications of Backyard, now available to read online.</p>
-          <a class="nl-byline" href="assets/BackyardMag.pdf" target="_blank" rel="noopener">Read the issue PDF -></a>
-        </article>
-
-        <article class="section-spotlight">
-          <a href="observe-fire.html" class="section-spotlight-image-link">
-            <div class="section-spotlight-image-wrap">
-              <img src="assets/climate_section/heatmaps/Monthly_Global_Temperature_Anomalies.png" alt="Monthly global temperature anomalies" loading="lazy">
-            </div>
-          </a>
-          <p class="nl-pub">Observe the Fire</p>
-          <a href="observe-fire.html">
-            <h3 class="nl-headline">Notes from a changing world</h3>
-          </a>
-          <p class="nl-deck">Reports on the climate crisis, with climate records and visual data from 1880 to the present.</p>
-          <a class="nl-byline" href="observe-fire.html">Visit Observe the Fire -></a>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ── Latest from Observe the Fire ──────────────── -->
-    <section class="latest-section" aria-label="Latest from Observe the Fire">
-      <div class="section-header">
-        <span class="section-header-rule" aria-hidden="true"></span>
-        <span class="section-header-title">Latest</span>
-        <span class="section-header-rule" aria-hidden="true"></span>
-      </div>
-      <div class="latest-grid">
-        <div class="latest-col">
-          <p class="latest-col-label">Observe the Fire — Latest</p>
-          <div class="toc-list">
-            <div class="toc-item">
-              <a href="observe-fire.html">
-                <p class="toc-pub">Observe the Fire</p>
-                <p class="toc-title">Notes from a changing world</p>
-                <p class="toc-excerpt">Reports on the climate crisis, with climate records and visual data from 1880 to the present.</p>
-              </a>
-            </div>
+          <div class="ht-card-footer">
+            <a href="ht_article.html?article=ht_post_046-omoe9" class="ht-card-read-link">
+              <span>Read Essay</span>
+              <span class="ht-arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── Pull quote ──────────────────────────────────── -->
-    <section class="pull-quote-section" aria-label="Featured quote">
-      <blockquote class="pull-quote">
-        "The cosmos is all that is, or ever was, or ever will be."
+    <!-- Publications Section -->
+    <section id="publications" class="ht-section-wrap" aria-labelledby="publications-heading" style="margin-bottom: 4rem;">
+      <div class="ht-archive-header" style="padding: 0 0 1.5rem; border-bottom: 1px solid var(--ht-gray-border); margin-bottom: 2.5rem;">
+        <div class="ht-archive-title-group">
+          <h2 id="publications-heading" class="ht-archive-title">Our Publications</h2>
+          <span class="ht-archive-count">6 PUBLICATIONS</span>
+        </div>
+      </div>
+
+      <div class="ht-articles-grid">
+
+        <!-- 1. Heralding Time -->
+        <article class="ht-article-card">
+          <a href="ht.html" class="ht-card-media-link" aria-label="Visit Heralding Time">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substack-post-media.s3.amazonaws.com/public/images/7ff97fcc-6d86-4f4f-9287-d91080e4daed_1572x1048.png" 
+                alt="Heralding Time" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Publication</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Substack</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="ht.html">Heralding Time</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Essays on the history and philosophy of science, critical thought, physics, and culture.
+            </p>
+            <div class="ht-card-footer">
+              <a href="ht.html" class="ht-card-read-link">
+                <span>Explore Publication</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Last Scattering Surface -->
+        <article class="ht-article-card">
+          <a href="lss.html" class="ht-card-media-link" aria-label="Visit Last Scattering Surface">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substackcdn.com/image/fetch/$s_!dYeF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6643f148-adc0-43a6-b3e7-8621e12ef35e_1572x1048.png" 
+                alt="Last Scattering Surface" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Publication</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Cosmology</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="lss.html">Last Scattering Surface</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              A journal dedicated to cosmology, astrophysics, early universe expansion, and the stellar lifecycle.
+            </p>
+            <div class="ht-card-footer">
+              <a href="lss.html" class="ht-card-read-link">
+                <span>Explore Publication</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Space of Sound -->
+        <article class="ht-article-card">
+          <a href="sp.html" class="ht-card-media-link" aria-label="Visit Space of Sound">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="images/sos/orbits/8.png" 
+                alt="Space of Sound" 
+                class="ht-card-image"
+                loading="lazy"
+                onerror="this.src='images/titles/sos.png'"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Publication</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Music</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="sp.html">Space of Sound</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Sound orbits, sonic explorations, record discoveries, deep listening, and weekly music chronicles.
+            </p>
+            <div class="ht-card-footer">
+              <a href="sp.html" class="ht-card-read-link">
+                <span>Explore Publication</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Observe the Fire -->
+        <article class="ht-article-card">
+          <a href="observe-fire.html" class="ht-card-media-link" aria-label="Visit Observe the Fire">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="assets/climate_section/plots/Global_Temperature_Anomaly_1880-2026.png" 
+                alt="Observe the Fire" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Publication</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Climate</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="observe-fire.html">Observe the Fire</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Empirical climate data, global temperature anomaly heatmaps, and environmental chronicles from 1880 to today.
+            </p>
+            <div class="ht-card-footer">
+              <a href="observe-fire.html" class="ht-card-read-link">
+                <span>Explore Publication</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. The Blog -->
+        <article class="ht-article-card">
+          <a href="blog.html" class="ht-card-media-link" aria-label="Visit The Blog">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substack-post-media.s3.amazonaws.com/public/images/6dafcf2d-1eaa-456b-a97f-c649a723274b_1572x1048.png" 
+                alt="The Blog" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Publication</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Field Notes</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="blog.html">The Blog</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Short takes, philosophical observations, notes, and intellectual sketches from the Backyard editors.
+            </p>
+            <div class="ht-card-footer">
+              <a href="blog.html" class="ht-card-read-link">
+                <span>Explore Publication</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. The Magazine -->
+        <article class="ht-article-card">
+          <a href="magazine.html" class="ht-card-media-link" aria-label="Visit The Magazine">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substack-post-media.s3.amazonaws.com/public/images/c8191c36-0f91-4f3d-8dd6-970b83b2b3f5_1572x1048.png" 
+                alt="The Magazine" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Anthology</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">Issue No. 01</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="magazine.html">The Magazine — No. 01</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              A curated selection from the publications of Backyard, compiled in a unified editorial format.
+            </p>
+            <div class="ht-card-footer">
+              <a href="magazine.html" class="ht-card-read-link">
+                <span>Read Issue</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Latest Dispatches Grid -->
+    <section class="ht-section-wrap" aria-labelledby="latest-heading">
+      <div class="ht-archive-header" style="padding: 0 0 1.5rem; border-bottom: 1px solid var(--ht-gray-border); margin-bottom: 2.5rem;">
+        <div class="ht-archive-title-group">
+          <h2 id="latest-heading" class="ht-archive-title">Recent Dispatches</h2>
+          <span class="ht-archive-count">SELECTED ESSAYS</span>
+        </div>
+      </div>
+
+      <div class="ht-articles-grid">
+
+        <article class="ht-article-card">
+          <a href="ht_article.html?article=ht_post_how-the-cycloid-saved-the-british" class="ht-card-media-link">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substack-post-media.s3.amazonaws.com/public/images/fbe44cb8-5156-434c-82d5-3ddafcdf8469_1572x1048.png" 
+                alt="How the cycloid saved the British navy" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Heralding Time</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">17 Jan 2026</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="ht_article.html?article=ht_post_how-the-cycloid-saved-the-british">How the cycloid saved the British navy</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Of the mathematical curve that revolutionized maritime navigation, timekeeping, and pendulum physics.
+            </p>
+            <div class="ht-card-footer">
+              <a href="ht_article.html?article=ht_post_how-the-cycloid-saved-the-british" class="ht-card-read-link">
+                <span>Read Essay</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ht-article-card">
+          <a href="lss_article.html?article=lss_post_story-of-a-star-part-v" class="ht-card-media-link">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="https://substackcdn.com/image/fetch/$s_!dYeF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6643f148-adc0-43a6-b3e7-8621e12ef35e_1572x1048.png" 
+                alt="A story of a star - Part V" 
+                class="ht-card-image"
+                loading="lazy"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Last Scattering Surface</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">10 Feb 2026</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="lss_article.html?article=lss_post_story-of-a-star-part-v">A story of a star — Part V</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Where we talk of stellar burning, core nuclear fusion, and the inevitable consequence of a star's final journey.
+            </p>
+            <div class="ht-card-footer">
+              <a href="lss_article.html?article=lss_post_story-of-a-star-part-v" class="ht-card-read-link">
+                <span>Read Essay</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ht-article-card">
+          <a href="spacesound_article.html?article=ss_post_001-sound-orbits-8-this-week-in-music" class="ht-card-media-link">
+            <div class="ht-card-media-wrap">
+              <img 
+                src="images/sos/orbits/8.png" 
+                alt="Sound Orbits #8" 
+                class="ht-card-image"
+                loading="lazy"
+                onerror="this.src='https://substack-post-media.s3.amazonaws.com/public/images/c0b7f297-aad4-4ddb-adc4-8aec49f94cd0_1200x772.jpeg'"
+              >
+            </div>
+          </a>
+          <div class="ht-card-content">
+            <div class="ht-card-meta">
+              <span class="ht-card-category">Space of Sound</span>
+              <span class="ht-meta-dot" aria-hidden="true">•</span>
+              <span class="ht-card-date">14 Mar 2026</span>
+            </div>
+            <h3 class="ht-card-title">
+              <a href="spacesound_article.html?article=ss_post_001-sound-orbits-8-this-week-in-music">Sound Orbits #8: This week in music</a>
+            </h3>
+            <p class="ht-card-excerpt">
+              Selected releases, acoustic explorations, and curated deep listening from early March.
+            </p>
+            <div class="ht-card-footer">
+              <a href="spacesound_article.html?article=ss_post_001-sound-orbits-8-this-week-in-music" class="ht-card-read-link">
+                <span>Listen &amp; Read</span>
+                <span class="ht-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Editorial Quote -->
+    <section class="ht-quote-wrap" style="margin: 4.5rem auto; max-width: 740px; text-align: center;" aria-label="Editorial quote">
+      <blockquote style="font-family: var(--ht-font-mono); font-size: 1.15rem; line-height: 1.7; border-left: none; padding: 0; font-style: italic; color: #222;">
+        “The cosmos is all that is, or ever was, or ever will be. Our feeblest contemplations of the Cosmos stir us — there is a tingling in the spine, a catch in the voice, a faint sensation, as if a distant memory, of falling from a height.”
       </blockquote>
-      <p class="pull-quote-source">— Carl Sagan, Cosmos</p>
+      <p style="font-family: var(--ht-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ht-accent); margin-top: 1rem;">
+        — Carl Sagan, Cosmos
+      </p>
     </section>
 
-    <!-- ── Where to follow row ─────────────────────────── -->
-    <section class="pub-row" aria-label="Where to follow">
-      <div class="pub-card">
-        <p class="pub-wordmark">Heralding Time</p>
-        <a href="https://heraldingtime.substack.com" class="pub-link" target="_blank" rel="noopener noreferrer">Read on Substack</a>
+    <!-- Newsletter Box -->
+    <section class="ht-newsletter-box" aria-labelledby="home-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Join the Backyard Reader Community</p>
+        <h3 id="home-nl-heading" class="ht-nl-title">Subscribe to the Publications</h3>
+        <p class="ht-nl-desc">Free dispatches spanning cosmology, physics history, musical discoveries, and empirical climate anomalies straight to your inbox.</p>
       </div>
-      <div class="pub-card">
-        <p class="pub-wordmark">Last Scattering Surface</p>
-        <a href="https://lastscatteringsurface.substack.com" class="pub-link" target="_blank" rel="noopener noreferrer">Read on Substack</a>
-      </div>
-      <div class="pub-card">
-        <p class="pub-wordmark">Space of Sound</p>
-        <a href="https://spaceofsound.substack.com" class="pub-link" target="_blank" rel="noopener noreferrer">Read on Substack</a>
-      </div>
-    </section>
-
-    <!-- ── Ornamental rule ─────────────────────────────── -->
-    <div class="orn-rule" aria-hidden="true">✦</div>
-
-    <!-- ── About strip ────────────────────────────────── -->
-    <section class="about-strip" aria-label="About the author">
-      <div class="about-avatar">
-        <img
-          src="images/landing_page/pic.jpg"
-          alt="Antonio Viscusi"
-          width="75" height="75"
-          loading="lazy"
-        >
-      </div>
-      <div>
-        <p class="about-name">Antonio Viscusi</p>
-        <p class="about-bio">
-          Msc in Astrophysics, now at INFN. Post-graduate master's in Space Science. Blogger.
-        </p>
-      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
     </section>
 
   </main>
 
   <div id="site-footer"></div>
-  
-  <script src="ht_data.js"></script>
-  <script src="lss_data.js"></script>
-  <script src="spacesound_data.js"></script>
-  <script src="blog_data.js"></script>
+
   <script src="layout.js"></script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

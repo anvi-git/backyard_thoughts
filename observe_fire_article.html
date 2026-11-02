@@ -3,28 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Observe the Fire Article</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Observe the Fire — Observation</title>
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="observe_fire_data.js"></script>
   <script src="backend/post_content_data.js"></script>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="main-content" class="page-wrapper publication-layout">
-    <article class="blog-article-container">
-      <p id="observe-fire-article-date" class="publication-small-date"></p>
-      <h1 id="observe-fire-article-title"></h1>
-      <section id="observe-fire-article-body" class="blog-article-content"></section>
+  <!-- Main Article Layout: Centered 50% width container -->
+  <main id="main-content" class="ht-article-layout">
+    
+    <nav class="ht-article-back-nav" aria-label="Return navigation">
+      <a href="observe-fire.html" class="ht-back-btn">
+        <span aria-hidden="true">←</span>
+        <span>Back to Observe the Fire</span>
+      </a>
+    </nav>
+
+    <article class="ht-single-article">
+      <!-- Article Header -->
+      <header class="ht-article-header">
+        <div class="ht-article-eyebrow-row">
+          <span class="ht-article-badge">FROM BACKYARD</span>
+          <span class="ht-meta-dot" aria-hidden="true">•</span>
+          <span class="ht-article-category">OBSERVE THE FIRE</span>
+        </div>
+
+        <h1 class="ht-article-headline" id="observe-fire-article-title">Climate Observation</h1>
+
+        <div class="ht-article-meta-bar">
+          <div class="ht-article-meta-left">
+            <time id="observe-fire-article-date" datetime=""></time>
+            <span class="ht-meta-dot" aria-hidden="true">•</span>
+            <span>CLIMATE OBSERVATIONS</span>
+          </div>
+          <div class="ht-article-meta-share">
+            <a href="https://substack.com/@backyardmagazine" target="_blank" rel="noopener noreferrer">
+              Original on Substack <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Essay body text: 50% width centered, vertical left line, drop cap on first letter -->
+      <div id="observe-fire-article-body" class="ht-article-body"></div>
     </article>
+
+    <!-- Newsletter Callout Box -->
+    <section class="ht-newsletter-box" aria-labelledby="of-article-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Observe the Fire · Climate Desk</p>
+        <h3 id="of-article-nl-heading" class="ht-nl-title">Stay Informed</h3>
+        <p class="ht-nl-desc">Subscribe to receive future climate updates and environmental records delivered straight to your inbox.</p>
+      </div>
+      <form class="ht-nl-form" action="https://substack.com/@backyardmagazine" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
+  <script src="layout.js"></script>
   <script>
     function escapeHtml(value) {
       return (value || '')
@@ -38,51 +100,44 @@
     function renderBody(container, body) {
       const trimmed = (body || '').trim();
       if (!trimmed) {
-        container.innerHTML = '<p>This observation has no content yet.</p>';
+        container.innerHTML = '<p class="ht-first-p">No observation notes available for this entry.</p>';
         return;
       }
 
       if (/<\s*[a-z!][^>]*>/i.test(trimmed)) {
         container.innerHTML = trimmed;
-        return;
+      } else {
+        container.innerHTML = trimmed
+          .split(/\n{2,}/)
+          .map((block, idx) => {
+            const pClass = idx === 0 ? ' class="ht-first-p"' : '';
+            return `<p${pClass}>${escapeHtml(block).replace(/\n/g, '<br>')}</p>`;
+          })
+          .join('');
       }
 
-      container.innerHTML = trimmed
-        .split(/\n{2,}/)
-        .map(block => `<p>${escapeHtml(block).replace(/\n/g, '<br>')}</p>`)
-        .join('');
+      const firstP = container.querySelector('p');
+      if (firstP && !firstP.querySelector('.drop-cap') && !firstP.classList.contains('ht-first-p')) {
+        firstP.classList.add('ht-first-p');
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const id = params.get('article');
-      const article = (window.OBSERVE_FIRE_ARTICLES || {})[id];
+      const article = (window.OBSERVE_FIRE_ARTICLES || {})[id] || {};
       const body = document.getElementById('observe-fire-article-body');
 
-      if (!article) {
-        body.innerHTML = '<p>Observation not found.</p>';
-        return;
+      document.getElementById('observe-fire-article-title').textContent = article.title || 'Climate Observation';
+      const dateEl = document.getElementById('observe-fire-article-date');
+      if (dateEl && article.date) {
+        dateEl.textContent = article.date;
       }
 
-      document.getElementById('observe-fire-article-title').textContent = article.title || '';
-      document.getElementById('observe-fire-article-date').textContent = article.date || '';
-      const embeddedBody = window.POST_CONTENTS && window.POST_CONTENTS[article.markdownFile];
-
-      if (typeof embeddedBody === 'string') {
-        renderBody(body, embeddedBody);
-        return;
+      if (body) {
+        renderBody(body, article.content || article.excerpt || '');
       }
-
-      fetch(article.markdownFile)
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.text();
-        })
-        .then(content => renderBody(body, content))
-        .catch(() => { body.innerHTML = '<p>Unable to load this observation.</p>'; });
     });
   </script>
-  <script src="layout.js"></script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

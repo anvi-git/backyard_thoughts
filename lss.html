@@ -3,253 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAST SCATTERING SURFACE</title>
-  <link rel="stylesheet" href="style.css">
+  <title>LAST SCATTERING SURFACE — From Backyard</title>
+  <meta name="description" content="Last Scattering Surface: a journal of cosmology, astrophysics, the early universe, and stellar evolution. Part of the From Backyard family of publications.">
   <link rel="icon" href="favicon_io/bt_logo.png" type="image/x-icon">
+
+  <!-- Typography: Bebas Neue for titles & JetBrains Mono for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=UnifrakturMaguntia&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ht.css">
   <script src="lss_data.js"></script>
+  <script src="archive-engine.js"></script>
 </head>
-<body>
+<body class="ht-body">
+  <a href="#main-content" class="ht-skip-link">Skip to main content</a>
+
   <div id="site-header"></div>
 
-  <main id="main-content" class="page-wrapper collection-page publication-home lss-page">
-    <h1 class="publication-title-image-wrap">
-      <img src="images/titles/lss.png" alt="LAST SCATTERING SURFACE" class="publication-title-image">
-    </h1>
+  <!-- Hero with Dot Pattern -->
+  <section class="ht-hero" aria-labelledby="lss-hero-title">
+    <div class="ht-hero-dots-pattern" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="lss-dot-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#0d0d0d" opacity="0.12" />
+          </pattern>
+          <mask id="lss-dot-fade">
+            <radialGradient id="lss-fade-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="95%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <rect width="100%" height="100%" fill="url(#lss-fade-grad)" />
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#lss-dot-grid)" mask="url(#lss-dot-fade)" />
+      </svg>
+    </div>
 
-    <section id="lss-featured" class="publication-featured"></section>
-    <section id="lss-sections" class="publication-sections"></section>
+    <div class="ht-hero-content">
+      <div class="ht-hero-eyebrow-badge">
+        <span class="ht-hero-eyebrow">FROM BACKYARD</span>
+      </div>
+
+      <h1 id="lss-hero-title" class="ht-hero-title">LAST SCATTERING SURFACE</h1>
+
+      <div class="ht-hero-rule" aria-hidden="true"></div>
+
+      <p class="ht-hero-description">
+        A journal of cosmology, astrophysics, the early universe, and stellar evolution.
+      </p>
+
+      <div class="ht-hero-actions">
+        <a href="#archivio" class="ht-btn-primary">
+          <span>Browse the Archive</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="https://lastscatteringsurface.substack.com" target="_blank" rel="noopener noreferrer" class="ht-btn-secondary">
+          <span>Subscribe on Substack</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Archive Header -->
+  <div class="ht-archive-header-wrap" id="archivio">
+    <div class="ht-archive-header">
+      <div class="ht-archive-title-group">
+        <h2 class="ht-archive-title" id="lss-archive-heading">Cosmological Essays</h2>
+        <span class="ht-archive-count" id="lss-articles-count">ALL ESSAYS</span>
+      </div>
+
+      <div class="ht-filter-tags" role="toolbar" aria-label="Filter essays">
+        <button type="button" class="ht-filter-tag active" data-filter="all">All</button>
+        <button type="button" class="ht-filter-tag" data-filter="star">Story of a Star</button>
+        <button type="button" class="ht-filter-tag" data-filter="cosmology">Cosmology</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <main id="main-content" class="ht-main-content">
+    
+    <!-- Featured Essay -->
+    <section id="lss-featured-container" aria-label="Featured essay"></section>
+
+    <!-- Articles Grid -->
+    <section aria-labelledby="lss-archive-heading">
+      <div class="ht-articles-grid" id="lss-articles-grid"></div>
+    </section>
+
+    <!-- Newsletter Box -->
+    <section class="ht-newsletter-box" aria-labelledby="lss-nl-heading">
+      <div class="ht-nl-text">
+        <p class="ht-nl-kicker">Last Scattering Surface Substack</p>
+        <h3 id="lss-nl-heading" class="ht-nl-title">Explore the Cosmos</h3>
+        <p class="ht-nl-desc">Subscribe to receive regular essays on astrophysics, early universe mechanics, and stellar history straight to your reading list.</p>
+      </div>
+      <form class="ht-nl-form" action="https://lastscatteringsurface.substack.com" method="get" target="_blank" rel="noopener noreferrer">
+        <div class="ht-nl-input-row">
+          <input 
+            type="email" 
+            name="email" 
+            class="ht-nl-input" 
+            placeholder="Your email address..." 
+            aria-label="Email address"
+            required
+          >
+          <button type="submit" class="ht-nl-submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
+  <script src="layout.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const dedupeArticles = sourceArticles => {
-        const scoreArticle = article => {
-          const file = ((article && article.markdownFile) || '').toLowerCase();
-          if (file.endsWith('.html')) return 2;
-          if (file.endsWith('.md')) return 1;
-          return 0;
-        };
-
-        const normalize = value => (value || '').toString().trim().toLowerCase();
-        const makeKey = article => [
-          normalize(article && article.title),
-          normalize(article && article.date),
-          normalize(article && article.excerpt)
-        ].join('||');
-
-        const bestByKey = new Map();
-
-        Object.entries(sourceArticles || {}).forEach(([id, article]) => {
-          const candidate = { id, article, score: scoreArticle(article) };
-          const key = makeKey(article);
-          const existing = bestByKey.get(key);
-
-          if (!existing || candidate.score > existing.score) {
-            bestByKey.set(key, candidate);
-          }
-        });
-
-        const articles = {};
-        bestByKey.forEach(entry => {
-          articles[entry.id] = entry.article;
-        });
-
-        return articles;
-      };
-
-      const getCurrentLanguage = () => {
-        const queryLanguage = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
-        return queryLanguage === 'it' ? 'ita' : 'eng';
-      };
-
-      const normalizeArticleLanguage = article => {
-        const value = (article && article.language ? article.language : '').toString().trim().toLowerCase();
-        if (value === 'it' || value === 'ita' || value === 'italian') return 'ita';
-        return 'eng';
-      };
-
-      const getArticleSlug = article => {
-        const markdownFile = ((article && article.markdownFile) || '').toString();
-        const filename = markdownFile.split('/').pop() || '';
-        return filename.replace(/\.(md|html)$/i, '');
-      };
-
-      const buildArticleHref = article => {
-        const slug = getArticleSlug(article);
-        return slug ? `lss_article.html?article=${encodeURIComponent(slug)}` : 'lss_article.html';
-      };
-
-      const createSectionBlock = (title, items, buildHref) => {
-        const pageSize = 4;
-        let page = 0;
-        const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
-
-        const block = document.createElement('section');
-        block.className = 'publication-section-block';
-        block.innerHTML = `
-          <h2 class="publication-section-title">${title}</h2>
-          <div class="publication-section-rail"></div>
-          <div class="publication-section-controls">
-            <button class="publication-section-nav prev" type="button" aria-label="Show previous posts">Previous</button>
-            <span class="publication-section-page"></span>
-            <button class="publication-section-nav next" type="button" aria-label="Show next posts">Next</button>
-          </div>
-        `;
-
-        const rail = block.querySelector('.publication-section-rail');
-        const prev = block.querySelector('.publication-section-nav.prev');
-        const next = block.querySelector('.publication-section-nav.next');
-        const pageLabel = block.querySelector('.publication-section-page');
-
-        const renderPage = () => {
-          rail.innerHTML = '';
-          const start = page * pageSize;
-          const pageItems = items.slice(start, start + pageSize);
-
-          pageItems.forEach(({ id, article }) => {
-            const card = document.createElement('a');
-            card.className = 'publication-small-card';
-            card.href = buildHref(id, article);
-
-            const imageMarkup = article.image
-              ? `<img src="${article.image}" alt="${article.title}" class="publication-small-image">`
-              : '<div class="publication-small-image publication-small-image-empty" aria-hidden="true"></div>';
-
-            card.innerHTML = `
-              ${imageMarkup}
-              <div class="publication-small-content">
-                <h3 class="publication-small-title">${article.title}</h3>
-                <p class="publication-small-excerpt">${article.excerpt || ''}</p>
-              </div>
-            `;
-            rail.appendChild(card);
-          });
-
-          prev.disabled = page <= 0;
-          next.disabled = page >= totalPages - 1;
-          if (pageLabel) pageLabel.textContent = `${page + 1} / ${totalPages}`;
-        };
-
-        prev.addEventListener('click', () => {
-          if (page <= 0) return;
-          page -= 1;
-          renderPage();
-        });
-
-        next.addEventListener('click', () => {
-          if (page >= totalPages - 1) return;
-          page += 1;
-          renderPage();
-        });
-
-        if (totalPages <= 1) {
-          prev.style.visibility = 'hidden';
-          next.style.visibility = 'hidden';
-        }
-
-        renderPage();
-        return block;
-      };
-
-      const sectionsContainer = document.getElementById('lss-sections');
-      const featured = document.getElementById('lss-featured');
-      const currentLanguage = getCurrentLanguage();
-      const articles = dedupeArticles(window.LSS_ARTICLES || {});
-      const ids = Object.keys(articles).sort((a, b) => {
-        const da = new Date(articles[a].date || 0);
-        const db = new Date(articles[b].date || 0);
-        return db - da;
-      });
-
-      const languageIds = ids.filter(id => normalizeArticleLanguage(articles[id]) === currentLanguage);
-
-      if (!languageIds.length) {
-        featured.innerHTML = '<p>No posts yet.</p>';
-        return;
-      }
-
-      const [latestId, ...restIds] = languageIds;
-      const latest = articles[latestId];
-
-      featured.innerHTML = `
-        <a class="publication-featured-card" href="${buildArticleHref(latest)}">
-          ${latest.image ? `<img src="${latest.image}" alt="${latest.title}" class="publication-featured-image">` : '<div class="publication-featured-image publication-featured-image-empty"></div>'}
-          <div class="publication-featured-content">
-            <p class="publication-featured-meta">Latest</p>
-            <h2 class="publication-featured-title">${latest.title}</h2>
-            <p class="publication-featured-excerpt">${latest.excerpt || ''}</p>
-          </div>
-        </a>
-      `;
-
-      const sections = [
-        {
-          key: 'star-story',
-          title: 'story of a star',
-          match: article => (article.title || '').toLowerCase().includes('story of a star'),
-          splitByLanguage: true
+      BackyardArchive.initArchive({
+        sourceData: window.LSS_ARTICLES,
+        viewerUrl: 'lss_article.html',
+        featuredContainerId: 'lss-featured-container',
+        gridContainerId: 'lss-articles-grid',
+        countElementId: 'lss-articles-count',
+        filterSelector: '.ht-filter-tag',
+        detectCategory: (art) => {
+          const t = (art.title || '').toLowerCase();
+          return t.includes('star') ? 'STORY OF A STAR' : 'COSMOLOGY';
         },
-        {
-          key: 'annals',
-          title: 'annals of lss',
-          match: article => (article.title || '').toLowerCase().includes('annals of lss'),
-          splitByLanguage: true
-        },
-        {
-          key: 'proceedings',
-          title: 'proceedings of lss',
-          match: article => (article.title || '').toLowerCase().includes('proceedings of lss'),
-          splitByLanguage: true
-        },
-        {
-          key: 'essays',
-          title: 'last scattering surface essays',
-          match: () => true,
-          splitByLanguage: true
+        filterFn: (art, filter) => {
+          const t = (art.title || '').toLowerCase();
+          if (filter === 'star') return t.includes('star');
+          if (filter === 'cosmology') return !t.includes('star');
+          return true;
         }
-      ];
-
-      const sectionBuckets = new Map();
-      sections.forEach(section => sectionBuckets.set(section.key, []));
-
-      restIds.forEach(id => {
-        const article = articles[id];
-        const matched = sections.find(section => section.match(article));
-        if (matched) sectionBuckets.get(matched.key).push({ id, article });
-      });
-
-      sections.forEach(section => {
-        const items = sectionBuckets.get(section.key) || [];
-        if (!items.length) return;
-
-        if (section.splitByLanguage) {
-          const byLanguage = { eng: [], ita: [] };
-          items.forEach(item => {
-            byLanguage[normalizeArticleLanguage(item.article)].push(item);
-          });
-
-          const languageItems = byLanguage[currentLanguage] || [];
-          if (!languageItems.length) return;
-
-          sectionsContainer.appendChild(
-            createSectionBlock(section.title, languageItems, (_id, article) => buildArticleHref(article))
-          );
-          return;
-        }
-
-        sectionsContainer.appendChild(
-          createSectionBlock(section.title, items, (_id, article) => buildArticleHref(article))
-        );
       });
     });
   </script>
-
-  <script src="layout.js"></script>
-  <script src="headerScrollState.js" defer></script>
 </body>
 </html>

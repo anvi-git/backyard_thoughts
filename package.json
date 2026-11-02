@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "node -e \"console.log('Build complete')\"",
+    "check": "node scripts/validate-content.cjs",
+    "lint": "node scripts/validate-content.cjs",
     "start": "node server.js"
   },
   "dependencies": {
