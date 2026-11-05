@@ -5,16 +5,34 @@
 ───────────────────────────────────────────────────────────── */
 
 :root {
-  /* Color Palette */
+  /* Color Palette — Harmonized with the celestial artwork */
   --ht-black: #0d0d0d;
   --ht-white: #ffffff;
-  --ht-gray-warm: #6b6b6b;
-  --ht-gray-light: #faf9f6;
-  --ht-gray-border: #e4e1db;
+  --ht-gray-warm: #606060;
+  --ht-gray-light: #f8fafc;
+  --ht-gray-border: #e2e8f0;
   --ht-gray-border-subtle: rgba(13, 13, 13, 0.08);
-  --ht-accent: #d98f55;
-  --ht-accent-hover: #b86b32;
-  --ht-accent-accessible: #9e4f16;
+
+  /* Primary Accent: Terracotta Red (from "BACKYARD" & "EARTH" artwork titles) */
+  --ht-red: #af4e4b;
+  --ht-accent: #af4e4b;
+  --ht-accent-hover: #8e3836;
+  --ht-accent-accessible: #8e3836;
+  --ht-accent-subtle: rgba(175, 78, 75, 0.09);
+
+  /* Secondary Accent: Celestial Sky Blue (from the artwork background) */
+  --ht-sky-blue: #8cb6ea;
+  --ht-sky-blue-tint: #edf4fd;
+  --ht-sky-blue-border: #c4dbf8;
+  --ht-sky-blue-hover: #7ba6e1;
+  --ht-blue: #8cb6ea;
+
+  /* Tertiary Accent: Solar Yellow (from the sun halos and highlight text) */
+  --ht-sun-yellow: #faee87;
+  --ht-sun-yellow-tint: #fefee6;
+  --ht-sun-yellow-border: #ecd954;
+  --ht-sun-yellow-dark: #a8920f;
+  --ht-yellow: #faee87;
 
   /* Legacy variable mappings for backward compatibility */
   --ink: var(--ht-black);
@@ -22,7 +40,7 @@
   --paper: var(--ht-white);
   --paper-tint: var(--ht-gray-light);
   --rule: var(--ht-gray-border);
-  --rule-light: #f0ede6;
+  --rule-light: #f1f5f9;
   --rule-heavy: var(--ht-black);
   --accent: var(--ht-accent);
   --content-max: 1200px;

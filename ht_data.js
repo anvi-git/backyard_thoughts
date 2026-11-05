@@ -4,7 +4,7 @@ window.HT_ARTICLES = {
     "date": "2026-06-24",
     "excerpt": "on the motion of the Earth - chapter IX",
     "markdownFile": "posts/heralding_time/ht_post_046-omoe9.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/7ff97fcc-6d86-4f4f-9287-d91080e4daed_1572x1048.png",
+    "image": "images/ht/posts/omoe9.png",
     "language": "eng"
   },
   "2": {
@@ -60,7 +60,7 @@ window.HT_ARTICLES = {
     "date": "2025-12-07",
     "excerpt": "on the motion of the Earth - chapter VIII",
     "markdownFile": "posts/heralding_time/ht_post_009-the-responses-to-parmenides.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/3a172f90-e2e5-4ca9-b76c-1a7265fdfe67_1572x1048.png",
+    "image": "images/ht/posts/omoe8.png",
     "language": "eng"
   },
   "22": {
@@ -68,7 +68,7 @@ window.HT_ARTICLES = {
     "date": "2025-11-23",
     "excerpt": "on the motion of the Earth - chapter VII",
     "markdownFile": "posts/heralding_time/ht_post_011-the-problem-of-change.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/a246fc3c-3b16-4afd-adef-ab64eab5f3c8_1572x1048.png",
+    "image": "images/ht/posts/omoe7.png",
     "language": "eng"
   },
   "26": {
@@ -76,7 +76,7 @@ window.HT_ARTICLES = {
     "date": "2025-11-05",
     "excerpt": "on the motion of the Earth - chapter VI",
     "markdownFile": "posts/heralding_time/ht_post_anaximanders-indefinite-principle.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/1b4712cc-4196-49fa-8899-52ed79f79f61_1572x1048.png",
+    "image": "images/ht/posts/omoe6.png",
     "language": "eng"
   },
   "30": {
@@ -84,7 +84,7 @@ window.HT_ARTICLES = {
     "date": "2025-10-22",
     "excerpt": "on the motion of the Earth - chapter V",
     "markdownFile": "posts/heralding_time/ht_post_on-the-motion-of-the-earth-thales.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/f118f138-b674-4e7e-bc6c-a636355e4a02_1572x1048.png",
+    "image": "images/ht/posts/omoe5.png",
     "language": "eng"
   },
   "34": {
@@ -92,7 +92,7 @@ window.HT_ARTICLES = {
     "date": "2025-10-15",
     "excerpt": "on the motion of the Earth - chapter IV",
     "markdownFile": "posts/heralding_time/ht_post_on-the-motion-of-the-earth-homer.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/dc5ac1aa-d813-4ae9-941e-2e7e19e734b3_1572x1048.png",
+    "image": "images/ht/posts/omoe4.png",
     "language": "eng"
   },
   "38": {
@@ -100,7 +100,7 @@ window.HT_ARTICLES = {
     "date": "2025-10-08",
     "excerpt": "on the motion of the Earth - chapter III",
     "markdownFile": "posts/heralding_time/ht_post_on-the-motion-of-the-earth-constants.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/41bd3ad1-3761-4102-a12e-b1a239e7f8bd_1572x1048.png",
+    "image": "images/ht/posts/omoe3.png",
     "language": "eng"
   },
   "41": {
@@ -108,7 +108,7 @@ window.HT_ARTICLES = {
     "date": "2025-10-01",
     "excerpt": "on the motion of the Earth - chapter II",
     "markdownFile": "posts/heralding_time/ht_post_eng-on-the-motion-of-the-earth-three.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/048c5317-a93a-4c18-a659-2f5eb92c6830_1572x1048.png",
+    "image": "images/ht/posts/omoe2.png",
     "language": "eng"
   },
   "43": {
@@ -116,7 +116,7 @@ window.HT_ARTICLES = {
     "date": "2025-09-24",
     "excerpt": "on the motion of the Earth - chapter I",
     "markdownFile": "posts/heralding_time/ht_post_eng-on-the-motion-of-the-earth-sun.html",
-    "image": "https://substack-post-media.s3.amazonaws.com/public/images/183c5cf6-8eb8-4a4e-956a-0aed0cfd94a1_1572x1048.png",
+    "image": "images/ht/posts/omoe1.png",
     "language": "eng"
   }
 };
